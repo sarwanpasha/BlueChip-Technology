@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hacknews.aspx.cs" Inherits="hacknews" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tablets.aspx.cs" Inherits="tablets" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
                     <link rel="SHORTCUT ICON" href="images/bull.png">
-        <title>Hack news</title>
+        <title>Tablets</title>
        <style>
 * {
  margin: 0px;
@@ -48,7 +48,7 @@ body
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-        <!----------  social media bar Starts    --------------->  
+            <!----------  social media bar Starts    --------------->  
         <style>
 nabo{ 
     padding: 0px; 
@@ -114,7 +114,6 @@ lui img { float: left;
     </style>
             <!----------  social media bar ends    --------------->  
 
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -132,7 +131,7 @@ lui img { float: left;
 	<div class="row">
 		<div class="col-md-12">
 			<div class="homestream latest" id="latest">
-				<h2 class="sectiontitle">Hack news</h2>
+				<h2 class="sectiontitle">Tablets</h2>
 				<div class="list">
                     <!------------- Section1 Starts     --------->
              <div class="pl pl-floathero">
@@ -160,7 +159,8 @@ lui img { float: left;
 		<a href="/topic/sleep" class="kicker">Sleep</a>		
                                 <h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
 
-									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory with your eyes closed.</div>
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory 
+                                        with your eyes closed.</div>
 					
 									
 				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
@@ -169,7 +169,7 @@ lui img { float: left;
 										</div>
 </div>
                                         <!------------- Section2 Ends     --------->
-                                                            <!------------- Section3 Starts     --------->
+                                        <!------------- Section3 Starts     --------->
              <div class="pl pl-floathero">
 										<a href="/article/247728" class="hero">
 					<img class="lazy" src="images/8.jpg" data-original="https://assets.entrepreneur.com/content/3x2/274/20150625150229-learn-sleep-woman-grass-book.jpeg" alt="Can You Learn in Your Sleep?" />
@@ -394,4 +394,3 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     </form>
 </body>
 </html>
-

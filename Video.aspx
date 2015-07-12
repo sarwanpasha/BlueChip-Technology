@@ -48,6 +48,73 @@ body
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
+    <!------------------- Moving social Media starts     ----------------------->
+        <style>
+nabo{ 
+    padding: 0px; 
+    margin: 0px; 
+    border: 0px; 
+    top:0px;
+
+}
+
+#id-nabo             
+{ width: 100%;
+ height: 40px;
+ background-color: white;
+ position: relative;
+  top: 0px;
+}
+
+uiil{ float: right;
+}
+
+ul lui{ list-style-type: none;
+}
+
+
+lui { display: block;    
+    position: relative;
+    float:right;
+    transition:width 2s;
+    -webkit-transition:width 2s; /* Safari */
+    height: 40px;
+    width: 40px;
+    background-color: white;
+}
+
+
+lui au { width: 0px;
+    background:white;
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border: 1px solid blue;
+    overflow: hidden;
+    height: 40px;
+    width: 90px;
+    color: blue;
+    z-index: 0;
+    margin-left: 40px;
+}
+
+lui:hover { width: 400px;
+}
+
+lui:hover img{ float:left}
+
+
+lui img { float: left;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+       
+    </style>
+        <!------------------- Moving social Media ends     ----------------------->
+
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -102,6 +169,116 @@ body
 										</div>
 </div>
                                         <!------------- Section2 Ends     --------->
+                                                            <!------------- Section3 Starts     --------->
+             <div class="pl pl-floathero">
+										<a href="/article/247728" class="hero">
+					<img class="lazy" src="images/8.jpg" data-original="https://assets.entrepreneur.com/content/3x2/274/20150625150229-learn-sleep-woman-grass-book.jpeg" alt="Can You Learn in Your Sleep?" />
+				</a>
+							<div class="block">
+		<a href="/topic/sleep" class="kicker">Sleep</a>		<h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
+
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory with your eyes closed.</div>
+					
+									
+				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
+							
+														<time class="readtime"><i class="fa fa-clock-o"></i> 11 min read</time>
+										</div>
+</div>
+                                        <!------------- Section3 Ends     --------->
+                                        <!------------- Section4 Starts     --------->
+             <div class="pl pl-floathero">
+										<a href="/article/247728" class="hero">
+					<img class="lazy" src="images/7.jpg" data-original="https://assets.entrepreneur.com/content/3x2/274/20150625150229-learn-sleep-woman-grass-book.jpeg" alt="Can You Learn in Your Sleep?" />
+				</a>
+							<div class="block">
+		<a href="/topic/sleep" class="kicker">Sleep</a>		
+                                <h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
+
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory 
+                                        with your eyes closed.</div>
+					
+									
+				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
+							
+														<time class="readtime"><i class="fa fa-clock-o"></i> 11 min read</time>
+										</div>
+</div>
+                                        <!------------- Section4 Ends     --------->
+                                        <!------------- Section5 Starts     --------->
+             <div class="pl pl-floathero">
+										<a href="/article/247728" class="hero">
+					<img class="lazy" src="images/8.jpg" data-original="https://assets.entrepreneur.com/content/3x2/274/20150625150229-learn-sleep-woman-grass-book.jpeg" alt="Can You Learn in Your Sleep?" />
+				</a>
+							<div class="block">
+		<a href="/topic/sleep" class="kicker">Sleep</a>		<h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
+
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory with your eyes closed.</div>
+					
+									
+				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
+							
+														<time class="readtime"><i class="fa fa-clock-o"></i> 11 min read</time>
+										</div>
+</div>
+                                        <!------------- Section5 Ends     --------->
+                                        <!------------- Section6 Starts     --------->
+             <div class="pl pl-floathero">
+										<a href="/article/247728" class="hero">
+					<img class="lazy" src="images/7.jpg" data-original="https://assets.entrepreneur.com/content/3x2/274/20150625150229-learn-sleep-woman-grass-book.jpeg" alt="Can You Learn in Your Sleep?" />
+				</a>
+							<div class="block">
+		<a href="/topic/sleep" class="kicker">Sleep</a>		
+                                <h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
+
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory 
+                                        with your eyes closed.</div>
+					
+									
+				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
+							
+														<time class="readtime"><i class="fa fa-clock-o"></i> 11 min read</time>
+										</div>
+</div>
+                                        <!------------- Section6 Ends     --------->
+
+                          <!------------- Moving social media starts     --------->
+                            <div>
+            <div id="id-nabo">
+
+        <nabo>
+        <uil>
+                                    <lui>
+                <img src="images/yahoo-logo.png" width="40">
+            </lui>
+                                    <lui>
+                <img src="images/Whatsapp-Logo.png" width="40">
+            </lui>
+                                    <lui>
+                <img src="images/Youtube-logo.png" width="40">
+            </lui>
+                                    <lui>
+                <img src="images/Skype.png" width="40">
+            </lui>
+                                    <lui>
+                <img src="images/linkedin_logo.png" width="40">
+            </lui>                        
+            <lui>
+                <img src="images/google.png" width="40">
+            </lui>
+                        <lui>
+                <img src="images/tw.png" width="40">
+            </lui>
+            <lui>
+                <img src="images/fb.png" width="40">
+            </lui>
+
+        </uil>
+        </nabo>
+
+</div>
+</div>
+            <!------------- Moving social media ends     --------->
                 </div>
 
 			</div>

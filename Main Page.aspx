@@ -1072,9 +1072,12 @@ h1{
 
     <script type='text/javascript' src='http://tour.techinasia.com/wp-includes/js/jquery/jquery.js?ver=1.11.2'></script>
 
+                      <!--------------footer starts   ------------->
+    <link href="//dmypbau5frl9g.cloudfront.net/assets/market/core/index-733c840037287d8983784a1909b6d1be.css" media="all" rel="stylesheet" type="text/css" />
+                  <!--------------footer ends   ------------->
 </head>
 
-<body>
+<body style="background-color:ghostwhite">
      <form id="form1" runat="server">
            <div id="backtotop">Scroll to Top</div>
      <div style="height: 300px">
@@ -1889,7 +1892,10 @@ div#two {
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/transition.js?ver=4.3.5'></script>
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/vc_carousel.js?ver=4.3.5'></script>
          </div>
-                            
+           <br />
+         <center style="height: 41px">
+         <asp:LinkButton ID="seeAll1" href="Lattest.aspx" runat="server" Text="SEE ALL"></asp:LinkButton>
+                  </center>          
     <br /><br /><br /><br /> 
     <!------------ Section 1 Ends   ------>  
   
@@ -2233,6 +2239,9 @@ div#two {
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/transition.js?ver=4.3.5'></script>
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/vc_carousel.js?ver=4.3.5'></script>
          </div>
+                  <center style="height: 41px">
+         <asp:LinkButton ID="seeAll2" href="tablets.aspx" runat="server" Text="SEE ALL"></asp:LinkButton>
+                  </center> 
     <br /><br /><br />
          <br />
 
@@ -2572,6 +2581,9 @@ div#two {
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/transition.js?ver=4.3.5'></script>
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/vc_carousel.js?ver=4.3.5'></script>
          </div>
+                           <center style="height: 41px">
+         <asp:LinkButton ID="seeAll3" href="pcnews.aspx" runat="server" Text="SEE ALL"></asp:LinkButton>
+                  </center> 
     <br /><br /><br />
     <!------------ Section 3 Ends   ------>  
          <div runat="server" id="theDiv4">
@@ -2908,6 +2920,9 @@ div#two {
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/transition.js?ver=4.3.5'></script>
 <script type='text/javascript' src='http://tour.techinasia.com/wp-content/plugins/js_composer/assets/lib/vc_carousel/js/vc_carousel.js?ver=4.3.5'></script>
          </div>
+                                    <center style="height: 41px">
+         <asp:LinkButton ID="seeAll4" href="Video.aspx" runat="server" Text="SEE ALL"></asp:LinkButton>
+                  </center>
     <br /><br /><br /><br /><br /><br />
 
 
@@ -4046,86 +4061,162 @@ lui img { float: left;
         </div>
          <br /><br /><br />
          <!---- Comment Section Ends --------------->
-        <div style="background-image:url(images/28.jpg)">
-                    <br />
-            <asp:Label ID="Label2" runat="server" style="color:white" Text="BlueChip- Technology"></asp:Label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="Label1" runat="server" style="color:white" Text="About us"></asp:Label>
-                                <asp:Label ID="Label3" runat="server" style="color:white;margin-left:890px" Text="Follow us"></asp:Label>
-        <br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="Label4" runat="server" style="color:white" Text="Contact us"></asp:Label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Label5" runat="server" style="color:white; margin-left:500px " Text="Write for us"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-             <img src="images/Whatsapp-Logo.png" style="width:41px; height: 31px;"/>
-                         <img src="images/yahoo-logo.png" style="width:41px; height: 31px;"/>
+                  <!---- Footer Section starts --------------->
+    <div class="page">
+        <div class="page__canvas">
+            <div class="canvas">
+                <div class="canvas__header">
+                    <footer class="site-footer">
+                        <div class="site-footer__primary">
+                            <div class="footer-primary">
+                                <div class="grid-container">
+                                    <div class="footer-top">
+                                        <div class="footer-top__left">
+                                            <a class="footer-top__market-logo" href="https://market.envato.com">Envato Market</a>
+                                        </div>
+                                        <div class="footer-top__right is-hidden-tablet-and-below">
+                                            <div class="market-stats">
+                                                <div class="market-stats__stat">
+                                                    <p class="t-body -color-light h-remove-margin">
+                                                        0
+        <span>community members</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer-primary__columns">
+                                        <div class="footer-primary__group--first">
+                                            <div class="footer-box">
+                                                <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-social">
+                                                    <h4>Follow us</h4>
+                                                </div>
+                                                <div id="footer-social" class="footer-box__content">
+                                                    <ul class="social-links">
+                                                        <li><a><img src="images/fb.png" width="40"></a></li>
+                                                        <li><a><img src="images/tw.png" width="40"></a></li>
+                                                        <li><a><img src="images/google.png" width="40"></a></li>
+                                                        <li><a><img src="images/linkedin_logo.png" width="40"></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="footer-box">
+                                                <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-meet">
+                                                    <h4>Meet Us</h4>
+                                                </div>
+                                                <div id="footer-meet" class="footer-box__content">
+                                                    <div class="footer-box__list">
+                                                        <ul class="t-list -style-none">
+                                                            <li class="t-body h-remove-margin"><a href="http://envato.com">About </a>Us</li>
+                                                            <li class="t-body h-remove-margin"><a href="http://www.envato.com/sites">Explore our Ecosystem</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="http://envato.com/careers">Careers</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer-box">
+                                                <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-help">
+                                                    <h4>Need Help?</h4>
+                                                </div>
+                                                <div id="footer-help" class="footer-box__content">
+                                                    <div class="footer-box__list">
+                                                        <ul class="t-list -style-none">
+                                                            <li class="t-body h-remove-margin"><a href="https://help.market.envato.com" class="footer-box__link">Help Center</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="/legal/market" rel="nofollow"> Our Market Terms</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="/legal/author" rel="nofollow">Author Terms</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="/licenses" rel="nofollow">Envato Market Licenses</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="http://www.envato.com/contact" rel="nofollow">Contact </a>Us</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer-primary__group--second">
+                                            <div class="footer-box">
+                                                <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-community">
+                                                    <h4><span class="is-hidden-tablet-and-below">Join our</span> Community
+            </h4>
+                                                </div>
+                                                <div id="footer-community" class="footer-box__content">
+                                                    <div class="footer-box__list">
+                                                        <ul class="t-list -style-none">
+                                                            <li class="t-body h-remove-margin"><a href="/forums" rel="nofollow">Forums</a></li>
+                                                            <li class="t-body h-remove-margin">Our<a href="http://marketblog.envato.com/"> Market Blog</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="http://envato.com/community/meetups">Community Meetups</a></li>
+                                                            <li class="t-body h-remove-margin"><a href="/affiliate_program" rel="nofollow">Become an Affiliate</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer-box">
+                                                <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-subscribe">
+                                                    <h4><span class="is-hidden-tablet-and-below">Email</span> Newsletters
+            </h4>
+                                                </div>
+                                                <div id="footer-subscribe" class="footer-box__content">
+                                                    <p class="t-body h-remove-margin is-hidden-desktop">
+                                                        Subscribe to receive updates</p>
+                                                    <p class="t-body is-hidden-tablet-and-below">
+  Subscribe to receive inspiration, ideas, and news in your inbox.
+                                                    </p>
+                                                    <form action="https://Envato.us1.list-manage.com/subscribe/post?u=01a7104df9f31fd41e34ccbed&amp;amp;id=6f890803c2&amp;group[21][4]=true&amp;group[301][512]=true&amp;group[301][8192]=true&amp;group[301][16384]=true" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate footer-subscribe" target="_blank">
+                                                        <input type="text" placeholder="Email Address" name="EMAIL" class="footer-subscribe__input" id="mce-EMAIL" />
+                                                        <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="footer-subscribe__submit btn--primary-full">
+                                                            Subscribe
+                                                        </button>
+                                                    </form>
+                                                    <a href="http://www.envato.com/privacy" class="footer-box__external-link is-hidden-tablet-and-below">Privacy Policy</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="footer-primary__group--third">
+                                            <div class="footer-box">
+                                                <div class="footer-box__content is-hidden-tablet-and-below">
+                                                    <div class="media h-spacing-below">
+                                                        <div class="media__item">
+                                                            <a href="Lattest.aspx" target="_blank">
+                                                            <img alt="Open. New services!" height="112" src="images/7.jpg" width="140" /> </a>
+                                                        </div>
+                                                        <div class="media__body">
+                                                            <p class="t-body">
+                                                                Checkout The lattest Technology News Here.</p>
+                                                            <p class="t-body h-remove-margin">
+                                                                <a href="Lattest.aspx" class="t-link -color-light" target="_blank">Lattest Technology News</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="footer-box__content is-hidden-tablet-and-below">
+                                                    <div class="media">
+                                                        <div class="media__item">
+                                                            <a href="hacknews.aspx" target="_blank">
+                                                            <img alt="Tuts+" height="112" src="images/8.jpg" width="140" /> </a>
+                                                        </div>
+                                                        <div class="media__body">
+                                                            <p class="t-body">
+                                                                Here You can check The lattest news About Hacking from All over the World.</p>
+                                                            <p class="t-body h-remove-margin">
+                                                                <a href="hacknews.aspx" class="t-link -color-light" target="_blank">Lattest Hacking News</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer-bottom">
+                                        <p class="t-body h-remove-margin">
+                                            <small>&copy; 2015 BlueChip- Technology Ltd.</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+          </div>
 
-        <br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="Label6" runat="server" style="color:white" Text="Jobs"></asp:Label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="Label7" runat="server" style="color:white" Text="Careers"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <img src="images/tw.png" style="width:41px; height: 31px;"/>
-                         <img src="images/Youtube-logo.png" style="width:41px; height: 31px;"/>
-&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                                <asp:Label ID="Label8" runat="server" style="color:white" Text="Staff"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <img src="images/google.png" style="width:41px; height: 31px;"/>
-                         <img src="images/linkedin_logo.png" style="width:41px; height: 31px;"/>
-
-        <br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="Label9" runat="server" style="color:white" Text="Tip us"></asp:Label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="Label10" runat="server" style="color:white" Text="Advertise"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <img src="images/Skype.png" style="width:41px; height: 31px;"/>
-                         <img src="images/fb.png" style="width:41px; height: 31px;"/>
-        <br />
-        <br />
-        <br />
-        <br />
-
-
-        <br />
-        <br />
-                                <asp:Label ID="Label11" runat="server" style="color:white" Text="Address: UET peshawar"></asp:Label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Label ID="Label12" runat="server" style="color:white" Text="Copyright © BlueChip- Technology"></asp:Label>
-        <br />
-        <br />
-        <br />
-        <br />
+        </div>
+      </div>
     </div>
-
+                           <!---- Footer Section ends --------------->
          <div class="nav">
  <nav class="navbar navbar-inverse" >
   <div class="container-fluid">

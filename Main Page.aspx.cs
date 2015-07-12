@@ -13,7 +13,7 @@ public partial class Main_Page : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         initializepics();
-        //hide();
+        hide();
         name();
         initializingBlogger();       // Initialize Text of Blogger Section
         initializeslideshow();       // Initialize Text of Slideshow Heading textSection
@@ -27,6 +27,18 @@ public partial class Main_Page : System.Web.UI.Page
         Li1.Visible = false;
         lbviews.ForeColor = System.Drawing.Color.White;
         lbviews.Font.Size = FontUnit.XXLarge;
+
+        seeAll1.Font.Size = FontUnit.XLarge;
+        seeAll1.ForeColor = System.Drawing.Color.Green;
+
+        seeAll2.Font.Size = FontUnit.XLarge;
+        seeAll2.ForeColor = System.Drawing.Color.Green;
+
+        seeAll3.Font.Size = FontUnit.XLarge;
+        seeAll3.ForeColor = System.Drawing.Color.Green;
+
+        seeAll4.Font.Size = FontUnit.XLarge;
+        seeAll4.ForeColor = System.Drawing.Color.Green;
 
         lbtoprated.ForeColor = System.Drawing.Color.Black;
         lbtoprated.Font.Size = FontUnit.XLarge;
