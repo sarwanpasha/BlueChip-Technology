@@ -11,4 +11,8 @@ public partial class hacknews : System.Web.UI.Page
     {
 
     }
+    protected void btnsubscribe_Click(object sender, EventArgs e)
+    {
+
+    }
 }

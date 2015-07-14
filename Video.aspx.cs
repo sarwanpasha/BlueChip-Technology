@@ -11,4 +11,8 @@ public partial class Video : System.Web.UI.Page
     {
 
     }
+    protected void btnsubscribe_Click(object sender, EventArgs e)
+    {
+
+    }
 }

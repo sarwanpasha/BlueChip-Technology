@@ -11,4 +11,8 @@ public partial class pcnews : System.Web.UI.Page
     {
 
     }
+    protected void btnsubscribe_Click(object sender, EventArgs e)
+    {
+
+    }
 }

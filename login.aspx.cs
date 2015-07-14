@@ -69,6 +69,10 @@ public partial class login : System.Web.UI.Page
 
                 bool databasecheck = check();
                 if(databasecheck==true){
+                    /////////////////////  Update Email address status as true (Starts) ////////////////////////
+                  //  updateEmail();
+                    /////////////////////  Update Email address status as true (Ends)  ////////////////////////
+                    lbstatus.Text = "Success";
                     Session["name"] = tbusername.Text;
                     Server.Transfer("Main Page.aspx", true);
                 }
@@ -90,6 +94,54 @@ public partial class login : System.Web.UI.Page
             lbstatus.Text = "You failed!" + ex.Message;
         }
 
+    }
+    private void updateEmail()
+    {
+        string userName;
+        userName = tbusername.Text;
+        bool status = true;
+        SqlConnection myConnection = new SqlConnection(source);
+        try
+        {
+        //    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+          //  cmd.CommandType = System.Data.CommandType.Text;
+          //  cmd.CommandText = ("update emailVerification set status='" + status + "' and email = '" + userName + "';");
+            ///////////////////////
+                        myConnection.Open();
+        //   String Fname = "select FirstName from website1 where EmailAddress='" + tbusername.Text + "'and Password='" + tbpassword.Text + "'";
+            SqlCommand cmmd = new SqlCommand("select email,status from emailVerification where email='" + userName + "'", myConnection);
+            SqlDataAdapter da = new SqlDataAdapter(cmmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+           
+            if (dt.Rows.Count > 0)
+            {
+                cmmd.CommandText = ("update emailVerification set status='" + status + "' where email = '" + userName + "';");
+            }
+            else
+            {
+              //  cmd.CommandText = ("insert into emailVerification set status='" + status + "' , email='" + userName + "' where status = 'false';");
+                cmmd.CommandText = ("insert into emailVerification values('" + userName + "','" + status + "');");
+            }
+            ///////////////////////
+           // cmd.CommandText = ("update emailVerification set status='" + status + "' , email='" + userName + "' where status = 'false';");
+            try
+            { 
+            cmmd.Connection = myConnection;
+            //myConnection.Open();
+            cmmd.ExecuteNonQuery();
+            myConnection.Close();
+            //   confermation();
+                }
+            catch (SqlException exx)
+            {
+                lbstatus.Text = exx.Message;
+            }
+
+        }
+        catch (SqlException ex)
+        {
+        }
     }
     protected void tbpassword_TextChanged(object sender, EventArgs e)
     {

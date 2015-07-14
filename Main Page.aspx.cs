@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,9 @@ using System.Web.UI.WebControls;
 
 public partial class Main_Page : System.Web.UI.Page
 {
+    string login;
+    string requiredEmailID="";
+    string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
     protected void Page_Load(object sender, EventArgs e)
     {
         initializepics();
@@ -30,6 +34,9 @@ public partial class Main_Page : System.Web.UI.Page
 
         seeAll1.Font.Size = FontUnit.XLarge;
         seeAll1.ForeColor = System.Drawing.Color.Green;
+
+        bloglattest.Font.Size = FontUnit.XLarge;
+        bloglattest.ForeColor = System.Drawing.Color.Black;
 
         seeAll2.Font.Size = FontUnit.XLarge;
         seeAll2.ForeColor = System.Drawing.Color.Green;
@@ -317,7 +324,6 @@ public partial class Main_Page : System.Web.UI.Page
             {
                 Loog.Visible = false;
                 Li1.Visible = true;
-                hide();
             }
             if (lbname.Text == "sarwanpasha@gmail.com")
             {
@@ -327,7 +333,7 @@ public partial class Main_Page : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lbname.Text = "";
+            lbname.Text = "" ;
         }
     }
     protected void Button1_Click(object sender, EventArgs e)
@@ -2005,5 +2011,9 @@ public partial class Main_Page : System.Web.UI.Page
     protected void BtncreatNewForm_Click(object sender, EventArgs e)
     {
         Server.Transfer("create checking.aspx", true);
+    }
+    protected void btnsubscribe_Click(object sender, EventArgs e)
+    {
+
     }
 }

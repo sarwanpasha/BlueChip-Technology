@@ -160,7 +160,7 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 .css-slideshow{
   position: relative;
   max-width: 495px;
-  height: 370px;
+  height: 405px;
   margin-top:100px;
   margin-left:50px;
                 top: -1075px;
@@ -207,7 +207,7 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 }
 .css-slideshow figure{
   opacity:0;
-                top: 1px;
+                top: -34px;
                 left: 14px;
             }
 figure:nth-child(1) {
@@ -1084,7 +1084,9 @@ h1{
                   <!--------------Blogger ends   ------------->
          
          <div class="css-slideshow" style="background-color:grey; top: 0px; left: 682px; width: 553px;">
-             <label style="color:black">&nbsp;&nbsp;&nbsp; Lattest News</label>
+           <Center>
+               <asp:Label ID="bloglattest" runat="server">Lattest News</asp:Label>
+               </Center>
          </div>
                   <div class="css-slideshow" style="background-color:white; top: -453px; left: 987px; width: 150px;height:100px;">
                                 <asp:Image  ID="blog1" runat="server" width="150" height="100" /> 
@@ -1298,45 +1300,52 @@ h1{
                           <!--------------Slideshow ends   ------------->
 
                   <!--------------Blogger Text starts   ------------->
-                           <div class="css-slideshow" style="background-color:white; top: -1522px; left: 689px; width: 279px; height:100px;">
+
+         <!-------- Text bar1 starts  ---->
+                           <div class="css-slideshow" style="background-color:white; top: -1558px; left: 689px; width: 279px; height:100px;">
   <!------  <asp:TextBox ID="tbx1" runat="server" style="top: -1522px; left: 689px;width: 279px; height:100px" ReadOnly="True" TextMode="MultiLine">
     </asp:TextBox > ------------->
-                                                        <!-------- Text bar starts  ---->
+                                                        
                          							<div  >
                                 <h3>
                                     <a href="/article/248140" id="tb0a0" runat="server"></a>
 
                                 </h3>											
 						</div>   
-                         <!-------- Text bar Ends  ---->
+                       </div>
+          <!-------- Text bar1 Ends  ---->
 
-         </div>
-                  <div class="css-slideshow" style="background-color:white; top: -1602px; left: 689px; width: 279px; height:100px;">
+           <!-------- Text bar2 starts  ---->
+                  <div class="css-slideshow" style="background-color:white; top: -1638px; left: 689px; width: 279px; height:100px;">
    <!--------- <asp:TextBox ID="tbx2" runat="server" style="background-color:white; top: -1602px; left: 689px; width: 279px; height:100px;" ReadOnly="True" TextMode="MultiLine" >
 
     </asp:TextBox >    ------------>
-                                               <!-------- Text bar starts  ---->
+                                             
                          							<div  >
                                 <h3>
                                     <a href="/article/248140" id="tb2a2" runat="server"></a>
 
                                 </h3>											
 						</div>   
-                         <!-------- Text bar Ends  ---->
+                      
                            </div>
-                  <div class="css-slideshow" style="background-color:white; top: -1677px; left: 689px; width: 279px; height:100px;">
+            <!-------- Text bar2 Ends  ---->
+
+         <!-------- Text bar3 starts  ---->
+                  <div class="css-slideshow" style="background-color:white; top: -1712px; left: 689px; width: 279px; height:100px;">
     <!---<asp:TextBox ID="tbx3" runat="server" style="background-color:white; top: -1677px; left: 689px; width: 279px; height:100px;" ReadOnly="True" TextMode="MultiLine">
 
     </asp:TextBox > ------->        
-                         <!-------- Text bar starts  ---->
+                         
                          							<div  >
                                 <h3>
                                     <a href="/article/248140" id="tb3a3" runat="server"></a>
 
                                 </h3>											
 						</div>   
-                         <!-------- Text bar Ends  ---->
+                         
                   </div>
+         <!-------- Text bar3 Ends  ---->
 
          <!--------------Blogger text ends   ------------->
      </div>
@@ -4158,13 +4167,11 @@ lui img { float: left;
                                                     <p class="t-body is-hidden-tablet-and-below">
   Subscribe to receive inspiration, ideas, and news in your inbox.
                                                     </p>
-                                                    <form action="https://Envato.us1.list-manage.com/subscribe/post?u=01a7104df9f31fd41e34ccbed&amp;amp;id=6f890803c2&amp;group[21][4]=true&amp;group[301][512]=true&amp;group[301][8192]=true&amp;group[301][16384]=true" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate footer-subscribe" target="_blank">
-                                                        <input type="text" placeholder="Email Address" name="EMAIL" class="footer-subscribe__input" id="mce-EMAIL" />
-                                                        <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="footer-subscribe__submit btn--primary-full">
-                                                            Subscribe
-                                                        </button>
-                                                    </form>
-                                                    <a href="http://www.envato.com/privacy" class="footer-box__external-link is-hidden-tablet-and-below">Privacy Policy</a>
+                                                    </div>
+                                                <input type="text" placeholder="Email Address" name="EMAIL" class="footer-subscribe__input" id="tbemailsubscribe" />
+                                                <asp:Button ID="btnsubscribe" runat="server" Text="Subscribe" OnClick="btnsubscribe_Click" />
+     </form>
+                                                    <a href="" class="footer-box__external-link is-hidden-tablet-and-below">Privacy Policy</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -4204,8 +4211,10 @@ lui img { float: left;
                                         </div>
                                     </div>
                                     <div class="footer-bottom">
+                                        <center>
                                         <p class="t-body h-remove-margin">
                                             <small>&copy; 2015 BlueChip- Technology Ltd.</small></p>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
@@ -4261,7 +4270,7 @@ lui img { float: left;
         </li>			
                 <li><a runat="server" href="Registration.aspx" style="color:white">Register</a></li>
         <li id="Loog" runat="server"><a id="logIn" runat="server" href="login.aspx" style="color:white">Log in</a></li>
-                  <li id="Li1" runat="server"><a id="A1" runat="server" href="Signout.aspx" style="color:white">Log out</a></li>
+         <li id="Li1" runat="server"><a id="A1" runat="server" href="Signout.aspx" style="color:white">Log out</a></li>
 		
       </ul>
 
