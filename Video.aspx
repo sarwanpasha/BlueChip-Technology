@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Video.aspx.cs" Inherits="Video" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Video.aspx.cs" Inherits="Video" Theme="Theme1" StyleSheetTheme="Theme1" %>
 
 <!DOCTYPE html>
 
@@ -6,42 +6,7 @@
 <head runat="server">
                     <link rel="SHORTCUT ICON" href="images/bull.png">
         <title>Videos</title>
-       <style>
-* {
- margin: 0px;
- padding: 0px;
- font-family: helvetica neue, helvetica, arial, sans-serif;
- font-weight: 200;
-}
-body 
-{ 
-    background-color:black
 
-}
-.nav {
-  position: fixed;
-  top: 0px;
-  height: 60px;
-  background: #006666;
-  left: -10px;
-  right: -50px;
-  text-align: center;
-  color: #fff;
-  line-height: 100px;
-  width: 2345px;
-    }
-
-.content {
-  height: 0px;
-  padding: 20px;
-  color:#fff;
-  width:728px;
-  margin:150px auto;
-}
-.content p {
-  margin: 20px 0;
-}
-</style>
       <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">

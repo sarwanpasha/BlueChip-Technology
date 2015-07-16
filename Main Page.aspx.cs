@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -13,12 +14,16 @@ public partial class Main_Page : System.Web.UI.Page
 {
     string login;
     string requiredEmailID="";
-    string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+    //string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
+    
+    String textField = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         initializepics();
         hide();
         name();
+        hidingLog();
         initializingBlogger();       // Initialize Text of Blogger Section
         initializeslideshow();       // Initialize Text of Slideshow Heading textSection
         smallTextinitialization();   // Initialize Text of Slideshow Small textSection
@@ -26,6 +31,7 @@ public partial class Main_Page : System.Web.UI.Page
         initializingLattest();       // Initialize Text of Lattest tag textSection
         gettingtime();               // Time initialization of Lattest tag
     }
+
     public void initializepics()
     {
         Li1.Visible = false;
@@ -303,6 +309,19 @@ public partial class Main_Page : System.Web.UI.Page
         theDiv4.Visible = false;
         Div5.Visible = false;
 
+        
+
+    }
+    public void hidingLog()
+    {
+        if( Loog.Visible == false)
+        {
+            Li1.Visible = true; //////////// Logout is visible now
+            lbname.Text= textField;
+        }
+        else if( Li1.Visible == false){
+            Loog.Visible = true;  //////////// Login is visible now
+        }
     }
     public void unhide()
     {
@@ -314,16 +333,18 @@ public partial class Main_Page : System.Web.UI.Page
     }
     public void name()
     {
-        lbname.Text = "";
+       // lbname.Text = textField ;
         try
         {
             lbname.ForeColor = System.Drawing.Color.Green;////COLOUR
             lbname.Text = Session["name"].ToString();
             Session.Remove("name");
+            textField = lbname.Text;
             if (!(lbname.Text == ""))
             {
                 Loog.Visible = false;
                 Li1.Visible = true;
+
             }
             if (lbname.Text == "sarwanpasha@gmail.com")
             {

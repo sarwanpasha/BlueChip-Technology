@@ -29,7 +29,9 @@ public partial class Registration : System.Web.UI.Page
     bool status = false;
     bool q = true;   
     string display = "Pop-up!";
-    string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+   // string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
+
  
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -109,6 +111,7 @@ public partial class Registration : System.Web.UI.Page
         cmd.Dispose();
         return UserID;
     }
+    #region Check Email ID Exist or not
     public bool check()
     {
         String wq = "true";
@@ -129,7 +132,7 @@ public partial class Registration : System.Web.UI.Page
             return true;
         }
     }
-    ////////////////////////////////////////////////////////////
+    #endregion
     protected void btnre_Click(object sender, ImageClickEventArgs e)
     {
        // Label1.Text = "Please wait...";

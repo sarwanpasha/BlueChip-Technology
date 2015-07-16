@@ -6,13 +6,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 public partial class login : System.Web.UI.Page
 {
 
     String username, password,firstname;
     String NAME;
-    string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+  //  string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
         Lb6.Font.Size = FontUnit.XLarge;
