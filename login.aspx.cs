@@ -31,12 +31,21 @@ public partial class login : System.Web.UI.Page
     {
         String wq = "true";
         SqlConnection myConnection = new SqlConnection(source);
+      //  myConnection.Open();
+       // SqlCommand st = new SqlCommand("select EmailAdress,Password from website1 where EmailAdress='" + tbusername.Text + "'and status='" + wq + "'", myConnection);
+       // SqlDataAdapter aad = new SqlDataAdapter(st);
+       // DataTable td = new DataTable();
+      //  aad.Fill(td);
+        SqlCommand cmd = new SqlCommand("CheckEmailActivation", myConnection);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
+        returnParameter.Direction = ParameterDirection.ReturnValue;
+        cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar).Value = tbusername.Text;
         myConnection.Open();
-        SqlCommand st = new SqlCommand("select EmailAdress,Password from website1 where EmailAdress='" + tbusername.Text + "'and status='" + wq + "'", myConnection);
-        SqlDataAdapter aad = new SqlDataAdapter(st);
-        DataTable td = new DataTable();
-        aad.Fill(td);
-        if (td.Rows.Count > 0)
+        cmd.ExecuteNonQuery();
+        int id = (int)returnParameter.Value;
+        myConnection.Close();
+        if (id > 0)
         {
             return true;
 
@@ -44,8 +53,6 @@ public partial class login : System.Web.UI.Page
         else
         {
             //lbstatus.Text = "Please Activate Your account to login!";
-
-            myConnection.Close();
             return false; 
         }
     }
@@ -57,25 +64,35 @@ public partial class login : System.Web.UI.Page
         SqlConnection myConnection = new SqlConnection(source);
         try
         {
+         //   myConnection.Open();
+         //   SqlCommand cmd = new SqlCommand("select EmailAdress,Password from website1 where EmailAdress='" + tbusername.Text + "'and Password='" + tbpassword.Text + "'", myConnection);
+           // SqlDataAdapter da = new SqlDataAdapter(cmd);
+          //  DataTable dt = new DataTable();
+           // da.Fill(dt);
+            SqlCommand cmd = new SqlCommand("LoginCheck", myConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar).Value = tbusername.Text;
+            cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = tbpassword.Text;
             myConnection.Open();
-        //   String Fname = "select FirstName from website1 where EmailAddress='" + tbusername.Text + "'and Password='" + tbpassword.Text + "'";
-            SqlCommand cmd = new SqlCommand("select EmailAdress,Password from website1 where EmailAdress='" + tbusername.Text + "'and Password='" + tbpassword.Text + "'", myConnection);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            
-            if (dt.Rows.Count > 0)
+            cmd.ExecuteNonQuery();
+            int id = (int)returnParameter.Value;
+            myConnection.Close();
+            if (id > 0)
             {
                 NAME = tbusername.Text;
                 lbstatus.Text = "Login sucess";
 
                 bool databasecheck = check();
                 if(databasecheck==true){
-                    /////////////////////  Update Email address status as true (Starts) ////////////////////////
-                  //  updateEmail();
-                    /////////////////////  Update Email address status as true (Ends)  ////////////////////////
-                    lbstatus.Text = "Success";
-                    Session["name"] = tbusername.Text;
+                //    lbstatus.Text = "Success";
+                   // Session["name"] = tbusername.Text;
+                    if (tbusername.Text == "sarwanpasha@gmail.com")
+                    {
+                        getter_setter_for_variables.setunhide(true);
+                    }
+                    getter_setter_for_variables.setLabel(NAME);
                     Server.Transfer("Main Page.aspx", true);
                 }
                 else{
@@ -89,61 +106,15 @@ public partial class login : System.Web.UI.Page
                 lbstatus.Text = "Invalid Login please check username and password";
             }
 
-            myConnection.Close();
+          //  myConnection.Close();
         }
         catch (SqlException ex)
         {
-            lbstatus.Text = "You failed!" + ex.Message;
+          //  lbstatus.Text = "You failed!" + ex.Message;
+            Utilities.LogError(ex);
+            throw;
         }
 
-    }
-    private void updateEmail()
-    {
-        string userName;
-        userName = tbusername.Text;
-        bool status = true;
-        SqlConnection myConnection = new SqlConnection(source);
-        try
-        {
-        //    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-          //  cmd.CommandType = System.Data.CommandType.Text;
-          //  cmd.CommandText = ("update emailVerification set status='" + status + "' and email = '" + userName + "';");
-            ///////////////////////
-                        myConnection.Open();
-        //   String Fname = "select FirstName from website1 where EmailAddress='" + tbusername.Text + "'and Password='" + tbpassword.Text + "'";
-            SqlCommand cmmd = new SqlCommand("select email,status from emailVerification where email='" + userName + "'", myConnection);
-            SqlDataAdapter da = new SqlDataAdapter(cmmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-           
-            if (dt.Rows.Count > 0)
-            {
-                cmmd.CommandText = ("update emailVerification set status='" + status + "' where email = '" + userName + "';");
-            }
-            else
-            {
-              //  cmd.CommandText = ("insert into emailVerification set status='" + status + "' , email='" + userName + "' where status = 'false';");
-                cmmd.CommandText = ("insert into emailVerification values('" + userName + "','" + status + "');");
-            }
-            ///////////////////////
-           // cmd.CommandText = ("update emailVerification set status='" + status + "' , email='" + userName + "' where status = 'false';");
-            try
-            { 
-            cmmd.Connection = myConnection;
-            //myConnection.Open();
-            cmmd.ExecuteNonQuery();
-            myConnection.Close();
-            //   confermation();
-                }
-            catch (SqlException exx)
-            {
-                lbstatus.Text = exx.Message;
-            }
-
-        }
-        catch (SqlException ex)
-        {
-        }
     }
     protected void tbpassword_TextChanged(object sender, EventArgs e)
     {

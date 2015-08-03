@@ -15,10 +15,10 @@ using System.Threading.Tasks;
 
 public partial class Emailconfermation : System.Web.UI.Page
 {
-    string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
    // bool confermation = false;
-    string RequestUserID;
-    
+    string RequestUserID, RequestUserPassword;
+     
     protected void Page_Load(object sender, EventArgs e)
     {
         lbinvissible.ForeColor = System.Drawing.Color.Red;
@@ -46,7 +46,8 @@ public partial class Emailconfermation : System.Web.UI.Page
     {
            
             RequestUserID = Request.QueryString["UserID"];
-            lbtest.Text = "Welcome    Email id = " + RequestUserID;
+            RequestUserPassword = Request.QueryString["Password"];
+            lbtest.Text = "Welcome    Email id = " + RequestUserID + "  Password = " + RequestUserPassword;
         try
         {
             SqlConnection myConnection = new SqlConnection(source);
@@ -55,14 +56,14 @@ public partial class Emailconfermation : System.Web.UI.Page
             // cmd.CommandText = ("insert into website1 values('" + id + "','" + userName + "','" + lastName + "','" + email + "','" + city + "','" + password + "','" + repeatpassword + "','" + status + "');");
             // cmd = new SqlCommand("UPDATE website1 SET status=true WHERE EmailAdress="+ @UserID +"AND Password=@EmailId", con);
            // cmd.CommandText = ("UPDATE website1 SET status='true' WHERE EmailAdress=" + "'" + RequestUserID + "'and Password='" + RequestPassword + "'");
-            cmd.CommandText = ("UPDATE website1 SET status='true' WHERE EmailAdress=" + "'" + RequestUserID + "'");
+            cmd.CommandText = ("UPDATE website1 SET status='true' WHERE EmailAdress=" + "'" + RequestUserID + "'" + "and Password=" + "'" + RequestUserPassword + "'");
             cmd.Connection = myConnection;
             myConnection.Open();
             cmd.ExecuteNonQuery();
             myConnection.Close();
         }
         catch(Exception confermation){
-            lbconfermation.Text = "Confermation exception!!   "+confermation.Message;
+          //  lbconfermation.Text = "Confermation exception!!   "+confermation.Message;  //To be sended to admin
         }
     }
 

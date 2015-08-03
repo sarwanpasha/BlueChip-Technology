@@ -1,0 +1,156 @@
+﻿        body{
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+.css-slideshow{
+  position: relative;
+  max-width: 495px;
+  height: 405px;
+  margin-top:50px;
+  margin-left:50px;
+  
+   left: -50px;
+            }
+.css-slideshow figure{
+  margin: 0;
+  max-width: 495px;
+  height: 370px;
+  background: #000;
+  position: absolute;
+}
+.css-slideshow img{
+  box-shadow: 0 0 2px #666;
+}
+.css-slideshow figcaption{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  background: rgba(0,0,0, .3);
+  font-size: .8em;
+  padding: 8px 12px;
+  opacity: 0;
+  transition: opacity .5s;
+  
+}
+.css-slideshow:hover figure figcaption{
+  opacity: 1;
+  position:relative;
+  padding:0; 
+  margin:0;
+  top:3px;
+}
+.css-slideshow-attr{
+  max-width: 495px;
+  text-align: right;
+  font-size: .7em;
+  font-style: italic;
+  margin-top:0px;
+  margin-left:-120px;
+}
+.css-slideshow-attr a{
+  color: #666;
+}
+.css-slideshow figure{
+  opacity:0;
+                top: 13px;
+                left: 25px;
+            }
+figure:nth-child(1) {
+  animation: xfade 48s 42s infinite;
+}
+figure:nth-child(2) {
+  animation: xfade 48s 36s infinite;
+}
+figure:nth-child(3) {
+  animation: xfade 48s 30s infinite;
+}
+figure:nth-child(4) {
+  animation: xfade 48s 24s infinite;
+}
+figure:nth-child(5) {
+  animation: xfade 48s 18s infinite;
+}
+figure:nth-child(6) {
+  animation: xfade 48s 12s infinite;
+}
+figure:nth-child(7) {
+  animation: xfade 48s 6s infinite;
+}
+figure:nth-child(8) {
+  animation: xfade 48s 0s infinite;
+}
+.css-slide{
+  position: relative;
+  max-width: 495px;
+  height: 22px;
+  margin-top:100px;
+  margin-left:50px;
+                top: -427px;
+                left: 888px;
+                width: 337px;
+            }
+.css-slide figure{
+  margin: 0;
+  max-width: 495px;
+  height: 370px;
+  background: #000;
+  position: absolute;
+}
+.css-slide img{
+  box-shadow: 0 0 2px #666;
+}
+.css-slide figcaption{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  background: rgba(0,0,0, .3);
+  font-size: .8em;
+  padding: 8px 12px;
+  opacity: 0;
+  transition: opacity .5s;
+  
+}
+.css-slide:hover figure figcaption{
+  opacity: 1;
+  position:relative;
+  padding:0; 
+  margin:0;
+  top:3px;
+}
+.css-slide-attr{
+  max-width: 495px;
+  text-align: right;
+  font-size: .7em;
+  font-style: italic;
+  margin-top:0px;
+  margin-left:-120px;
+}
+.css-slide-attr a{
+  color: #666;
+}
+.css-slide figure{
+  opacity:0;
+                top: 1px;
+                left: 14px;
+            }
+        @keyframes xfade {
+            0% {
+                opacity: 1;
+            }
+
+            10.5% {
+                opacity: 1;
+            }
+
+            12.5% {
+                opacity: 0;
+            }
+
+            98% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }

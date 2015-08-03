@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -11,7 +12,8 @@ using System.Web.UI.WebControls;
 public partial class create_checking : System.Web.UI.Page
 {
     string title, detail,name,organizationname,currentTime,myname;
-    string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+   // string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
+    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
     string a;
     string requiredNumber = string.Empty;
     int defaultNumber;
@@ -28,19 +30,27 @@ public partial class create_checking : System.Web.UI.Page
         {
             myname = "sarwan";
             SqlConnection myConnection = new SqlConnection(source);
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-          //  cmd.CommandText = ("insert into recordholder values('" + myname + "','" + 1 + "');");
-            cmd.CommandText = ("select number from recordholder where name=('" + myname + "');");
-            cmd.Connection = myConnection;
+           // System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+          //  cmd.CommandType = System.Data.CommandType.Text;
+           // cmd.CommandText = ("select number from recordholder where name=('" + myname + "');");
+            //cmd.Connection = myConnection;
+         //   myConnection.Open();
+           // SqlDataReader reader = cmd.ExecuteReader();
+          //  while (reader.Read())
+           // {
+           //     requiredNumber = reader[0].ToString();
+           // }
+           // myConnection.Close();
+            SqlCommand cmd = new SqlCommand("SelectingArticleNumber", myConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = myname;
             myConnection.Open();
-         // requiredNumber= cmd.ExecuteNonQuery();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                requiredNumber = reader[0].ToString();
-            }
+            cmd.ExecuteNonQuery();
+            int id = (int)returnParameter.Value;
             myConnection.Close();
+            requiredNumber = id.ToString();
             return requiredNumber;
         }
         catch(Exception ex){
@@ -57,10 +67,17 @@ public partial class create_checking : System.Web.UI.Page
         try
         {
             
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = ("update recordholder set number=" + num + "where name = 'sarwan';");
-            cmd.Connection = myConnection;
+          //  System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+          //  cmd.CommandType = System.Data.CommandType.Text;
+          //  cmd.CommandText = ("update recordholder set number=" + num + "where name = 'sarwan';");
+          //  cmd.Connection = myConnection;
+           // myConnection.Open();
+           // cmd.ExecuteNonQuery();
+            //myConnection.Close();
+
+            SqlCommand cmd = new SqlCommand("UpdatingArticleNumber", myConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@number", SqlDbType.VarChar).Value = num;
             myConnection.Open();
             cmd.ExecuteNonQuery();
             myConnection.Close();

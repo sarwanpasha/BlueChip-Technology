@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -14,24 +15,47 @@ public partial class Main_Page : System.Web.UI.Page
 {
     string login;
     string requiredEmailID="";
-    //string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
-    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
+    String toAddress, fromAddress, subject, body, fromPassword, comments;
+//    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
     
     String textField = "";
+    #region page_load
     protected void Page_Load(object sender, EventArgs e)
     {
-        initializepics();
-        hide();
-        name();
-        hidingLog();
-        initializingBlogger();       // Initialize Text of Blogger Section
-        initializeslideshow();       // Initialize Text of Slideshow Heading textSection
-        smallTextinitialization();   // Initialize Text of Slideshow Small textSection
-        authornameinitialization();  // Initialize Text of Author Name textSection
-        initializingLattest();       // Initialize Text of Lattest tag textSection
-        gettingtime();               // Time initialization of Lattest tag
-    }
+        if (!IsPostBack)
+        {
+            initializepics();
+            initializingBlogger();       // Initialize Text of Blogger Section
+            initializeslideshow();       // Initialize Text of Slideshow Heading textSection
+            smallTextinitialization();   // Initialize Text of Slideshow Small textSection
+            authornameinitialization();  // Initialize Text of Author Name textSection
+            initializingLattest();       // Initialize Text of Lattest tag textSection
+            gettingtime();               // Time initialization of Lattest tag
+            hide();
+        }
+        else
+        {
+          //  if (Page.PreviousPage == null)
+          //   {
+          //       LabelData.Text = "No previous page in post";
+          //   }
+            //  else
+           //  {
+           //      LabelData.Text =
+           //      ((TextBox)PreviousPage.FindControl("TextBox1")).Text;
+            //  }
 
+
+        }
+        bool st = getter_setter_for_variables.getunhide();
+        if (st == true)
+        {
+            unhide();
+        }
+
+    }
+    #endregion
+    #region initializepics
     public void initializepics()
     {
         Li1.Visible = false;
@@ -301,6 +325,8 @@ public partial class Main_Page : System.Web.UI.Page
         string iimgsectionn14 = "images/" + ssectionn14;
         Image6.ImageUrl = "~/" + iimgsectionn14;
     }
+#endregion
+    #region Hide Data
     public void hide()
     {
         theDiv1.Visible = false;
@@ -308,60 +334,28 @@ public partial class Main_Page : System.Web.UI.Page
         theDiv3.Visible = false;
         theDiv4.Visible = false;
         Div5.Visible = false;
+       }
+    #endregion
 
-        
-
-    }
-    public void hidingLog()
-    {
-        if( Loog.Visible == false)
-        {
-            Li1.Visible = true; //////////// Logout is visible now
-            lbname.Text= textField;
-        }
-        else if( Li1.Visible == false){
-            Loog.Visible = true;  //////////// Login is visible now
-        }
-    }
+    #region UN Hide Data
     public void unhide()
     {
         theDiv1.Visible = true;
         theDiv2.Visible = true;
         theDiv3.Visible = true;
         theDiv4.Visible = true;
-        Div5.Visible = false;
+        Div5.Visible = true;
     }
-    public void name()
-    {
-       // lbname.Text = textField ;
-        try
-        {
-            lbname.ForeColor = System.Drawing.Color.Green;////COLOUR
-            lbname.Text = Session["name"].ToString();
-            Session.Remove("name");
-            textField = lbname.Text;
-            if (!(lbname.Text == ""))
-            {
-                Loog.Visible = false;
-                Li1.Visible = true;
-
-            }
-            if (lbname.Text == "sarwanpasha@gmail.com")
-            {
-                unhide();
-            }
-            //  btnout.Visible = true;
-        }
-        catch (Exception ex)
-        {
-            lbname.Text = "" ;
-        }
-    }
+    #endregion
+    #region Upload1 button
     protected void Button1_Click(object sender, EventArgs e)
     {
         StartUpLoad();
 
     }
+    #endregion
+    #region upload1 function
+
     private void StartUpLoad()
     {
         try
@@ -479,6 +473,8 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
+    #endregion
+    #region upload2 funtion
     private void StartUpLoadFive()
     {
         try
@@ -596,6 +592,8 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
+    #endregion
+    #region upload3 function
     private void StartUpLoadNine()
     {
         try
@@ -715,6 +713,8 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
+    #endregion
+    #region upload4 function
     private void StartUpLoadThirteen()
     {
         try
@@ -832,6 +832,8 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
+    #endregion
+    #region Bllogger function for images
     private void blogger()
     {
         try
@@ -910,6 +912,8 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
+    #endregion
+    #region slider function for images
     private void slider()
     {
         try
@@ -1004,27 +1008,38 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
-
+    #endregion
+    #region upload2 button
     protected void Button5_Click(object sender, EventArgs e)
     {
         StartUpLoadFive();
     }
+    #endregion
+    #region upload3 button
     protected void Button9_Click(object sender, EventArgs e)
     {
         StartUpLoadNine();
     }
+    #endregion
+    #region upload4 button
     protected void Button13_Click(object sender, EventArgs e)
     {
         StartUpLoadThirteen();
     }
+    #endregion
+    #region slider button
     protected void Button14_Click(object sender, EventArgs e)
     {
         slider();
     }
+        #endregion
+    #region Bllogger button
     protected void Button2_Click(object sender, EventArgs e)
     {
         blogger();
     }
+            #endregion
+    #region initializingBlogger
     private void initializingBlogger()
     {
         tb0a0.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
@@ -1032,7 +1047,8 @@ public partial class Main_Page : System.Web.UI.Page
         tb3a3.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
 
     }
-
+    #endregion
+    #region text1 button
     protected void btntextpost_Click1(object sender, EventArgs e)
     {
         if (text1.Checked == false && text2.Checked == false && text3.Checked == false)
@@ -1065,6 +1081,8 @@ public partial class Main_Page : System.Web.UI.Page
             }
         }
     }
+    #endregion
+    #region text2 button
     protected void btntextpost_Click2(object sender, EventArgs e)
     {
         string a = TextBox1.Text;
@@ -1172,6 +1190,8 @@ public partial class Main_Page : System.Web.UI.Page
         ////////////////  Small text Ends  ///////////////////////
 
     }
+    #endregion
+    #region initializingLattest
     private void initializingLattest()
     {
         /////////////////   small Text  ///////////////////////
@@ -1284,12 +1304,9 @@ public partial class Main_Page : System.Web.UI.Page
         A108.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
         A111.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
         /////////////////   small Text Style slideshow tag  ///////////////////////
-
-
-
-
-
-    }
+     }
+    #endregion
+    #region text3 button
     protected void btntextpost_Click3(object sender, EventArgs e)
     {
 
@@ -1397,6 +1414,8 @@ public partial class Main_Page : System.Web.UI.Page
         ///////////////  small text Ends  /////////////////
 
     }
+    #endregion
+    #region text4 button
     protected void btntextpost_Click4(object sender, EventArgs e)
     {
         string a = TextBox3.Text;
@@ -1505,6 +1524,8 @@ public partial class Main_Page : System.Web.UI.Page
         }
         /////////////////  Small Text Ends   ///////////////////////
     }
+    #endregion
+    #region text5 button
     protected void btntextpost_Click5(object sender, EventArgs e)
     {
         string a = TextBox4.Text;
@@ -1616,11 +1637,8 @@ public partial class Main_Page : System.Web.UI.Page
 
 
     }
-
-    protected void btnimagesend_Click(object sender, ImageClickEventArgs e)
-    {
-
-    }
+    #endregion
+    #region initializeslideshow
     private void initializeslideshow()
     {
         slideshowa1.InnerHtml = "Image1 These 'Dressy' Sweatpants Are Killing It on Kickstarter";
@@ -1633,6 +1651,8 @@ public partial class Main_Page : System.Web.UI.Page
         slideshowa8.InnerHtml = "Image8 These 'Dressy' Sweatpants Are Killing It on Kickstarter";
 
     }
+#endregion
+    #region smallTextinitialization
     private void smallTextinitialization()
     {
         tb1aa1.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
@@ -1645,6 +1665,8 @@ public partial class Main_Page : System.Web.UI.Page
         tb1aa8.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
 
     }
+#endregion
+    #region slides text admin view
     protected void btnslidepost_Click(object sender, EventArgs e)
     {
         String a;
@@ -1752,11 +1774,9 @@ public partial class Main_Page : System.Web.UI.Page
             CheckBox8.Checked = false;
         }
         ////////////////////Small text Ends //////////////////////
-
-
-
-
-    }
+      }
+#endregion
+    #region authornameinitialization
     private void authornameinitialization()
     {
         author1.InnerHtml = "Catherine Clifford";
@@ -1770,10 +1790,14 @@ public partial class Main_Page : System.Web.UI.Page
 
 
     }
+    #endregion
+    #region For style slide button
     protected void Buttonstyle_Click(object sender, EventArgs e)
     {
         StartUpLoadstyle();
     }
+#endregion
+    #region StartUpLoadstyle, For style slide button
     private void StartUpLoadstyle()
     {
         try
@@ -1876,6 +1900,9 @@ public partial class Main_Page : System.Web.UI.Page
         }
 
     }
+#endregion
+    #region Video tag admin view button
+
     protected void btntextstylepost_Click(object sender, EventArgs e)
     {
         string a = TextBox5.Text;
@@ -1961,6 +1988,8 @@ public partial class Main_Page : System.Web.UI.Page
 
         ///////////////   Small text ends   ///////////////////////
     }
+    #endregion
+    #region Initializaing All dates
     private void gettingtime()
     {
         /////////////// Slideshow tag time //////////////////////
@@ -2029,12 +2058,76 @@ public partial class Main_Page : System.Web.UI.Page
         /////////////// Style tag time //////////////////////
 
     }
+    #endregion
+    #region create new form button
     protected void BtncreatNewForm_Click(object sender, EventArgs e)
     {
         Server.Transfer("create checking.aspx", true);
     }
+    #endregion
+    #region imagesend button
+    protected void btnimagesend_Click(object sender, ImageClickEventArgs e)
+    {
+        if (fromemail.Text == String.Empty || TBNAME.Text == String.Empty || TBNUMBER.Text == String.Empty || fromcomments.Text == String.Empty)
+        {
+            commentdisplay.Text = "Please Fill All Fields ";
+        }
+        else
+        {
+            try
+            {
+
+                SendMail();
+                commentdisplay.Text = "Your Comments after sending the mail";
+                commentdisplay.Visible = true;
+                subject = "";
+                fromemail.Text = "";
+                fromcomments.Text = "";
+                TBNAME.Text = "";
+                TBNUMBER.Text = "";
+                commentdisplay.ForeColor = System.Drawing.Color.White;////COLOUR
+                commentdisplay.Font.Size = FontUnit.XLarge;
+                commentdisplay.Text = "Message Sended ";
+                // abc();
+            }
+            catch (Exception ex)
+            {
+              //  commentdisplay.ForeColor = System.Drawing.Color.Red;////COLOUR
+               // commentdisplay.Font.Size = FontUnit.XLarge;
+               // commentdisplay.Text = "You Failed! " + ex.Message;
+                Utilities.LogError(ex);
+                throw;
+            }
+        }
+    }
+
+
+    #endregion
+    #region Email Sending function
+    protected void SendMail()
+    {
+        fromAddress = fromemail.Text.ToString();
+        toAddress = "sarwanpasha@gmail.com";
+        fromPassword = "incorrect123@";
+        subject = "User Views About The Website ";
+        comments = fromcomments.Text.ToString();
+        body = "From: " + fromAddress + "\n\n";
+        body += "Name: " + TBNAME.Text + "\n\n";
+        body += "Number: " + TBNUMBER.Text + "\n\n";
+        body += "Subject: " + subject + "\n\n";
+        body += "Question: \n\n" + comments + "\n";
+        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+        smtp.EnableSsl = true;
+        smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+        smtp.Credentials = new System.Net.NetworkCredential(toAddress, fromPassword);
+        smtp.Timeout = 20000;
+        smtp.Send(fromAddress, toAddress, subject, body);
+    }
+        #endregion
+    #region subscribe footer button
     protected void btnsubscribe_Click(object sender, EventArgs e)
     {
 
     }
+    #endregion
 }

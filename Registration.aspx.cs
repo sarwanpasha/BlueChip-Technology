@@ -50,24 +50,12 @@ public partial class Registration : System.Web.UI.Page
        string passwordd;
       emailId = txtEmail.Text.Trim();
       passwordd = txtPassword.Text.Trim();
-     // ActivationUrl = Server.HtmlEncode("http://localhost:1485/Emailconfermation.aspx?UserID=" + emailId + "/Password=" + passwordd);
-      ActivationUrl = Server.HtmlEncode("http://localhost:1485/Emailconfermation.aspx?UserID=" + emailId);
+      ActivationUrl = Server.HtmlEncode("http://localhost:2904/Emailconfermation.aspx?UserID=" + emailId + "&Password=" + passwordd);
+      //  ActivationUrl = Server.HtmlEncode("http://localhost:2904/Emailconfermation.aspx?UserID=" + emailId);   ///////// Query String
         try
         {
             //  string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             string activationCode = Guid.NewGuid().ToString();
-            using (SqlConnection con = new SqlConnection(source))
-            {
-
-                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = ("UPDATE website1 SET status='false' WHERE EmailAdress=" + "'" + txtEmail.Text + "'and Password='" + txtPassword.Text + "'");
-                cmd.Connection = con;
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
- 
-            }
             using (MailMessage mm = new MailMessage("sarwanpasha@gmail.com", txtEmail.Text))
             {
                 mm.Subject = "Account Activation";
@@ -86,7 +74,9 @@ public partial class Registration : System.Web.UI.Page
              }
         }
         catch(Exception q){
-            lbemail.Text = "Wrong!! "+q.Message;
+          //  lbemail.Text = "Wrong!! "+q.Message;
+            Utilities.LogError(q);
+            throw;
          }
 
     }
@@ -95,33 +85,28 @@ public partial class Registration : System.Web.UI.Page
     {
 
     }
-    private string FetchUserId(string emailId)
-    {
-
-        SqlCommand cmd = new SqlCommand();
-        SqlConnection con = new SqlConnection(source);
-        cmd = new SqlCommand("SELECT status FROM website1 WHERE EmailAdress=" + "'" + txtEmail.Text + "'", con);
-        cmd.Parameters.AddWithValue(txtEmail.Text, emailId);
-        if (con.State == ConnectionState.Closed)
-        {
-            con.Open();
-        }
-        string UserID = Convert.ToString(cmd.ExecuteNonQuery());
-        con.Close();
-        cmd.Dispose();
-        return UserID;
-    }
     #region Check Email ID Exist or not
     public bool check()
     {
         String wq = "true";
         SqlConnection myConnection = new SqlConnection(source);
-        myConnection.Open();
-        SqlCommand st = new SqlCommand("select EmailAdress from website1 where EmailAdress='" + txtEmail.Text + "'", myConnection);
-        SqlDataAdapter aad = new SqlDataAdapter(st);
-        DataTable td = new DataTable();
-        aad.Fill(td);
-        if (td.Rows.Count > 0)
+      //  myConnection.Open();
+       // SqlCommand st = new SqlCommand("select EmailAdress from website1 where EmailAdress='" + txtEmail.Text + "'", myConnection);
+       // SqlDataAdapter aad = new SqlDataAdapter(st);
+     //   DataTable td = new DataTable();
+      //  aad.Fill(td);
+        /////////////////////////
+        SqlCommand cmd = new SqlCommand("CheckAccountExistance", myConnection);
+        cmd.CommandType = CommandType.StoredProcedure;
+        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
+        returnParameter.Direction = ParameterDirection.ReturnValue;
+        cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar).Value = txtEmail.Text;
+         myConnection.Open();
+        cmd.ExecuteNonQuery();
+        int id = (int)returnParameter.Value;
+        myConnection.Close();
+        /////////////////////////
+        if (id > 0)
         {
             return false;
 
@@ -131,6 +116,7 @@ public partial class Registration : System.Web.UI.Page
             myConnection.Close();
             return true;
         }
+
     }
     #endregion
     protected void btnre_Click(object sender, ImageClickEventArgs e)
@@ -174,21 +160,40 @@ public partial class Registration : System.Web.UI.Page
                 SqlConnection myConnection = new SqlConnection(source);
                 try
                 {
-                    System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = ("insert into website1 values('" + id + "','" + userName + "','" + lastName + "','" + email + "','" + city + "','" + password + "','" + repeatpassword + "','" + status + "');");
-                    cmd.Connection = myConnection;
+                   // System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+              //      cmd.CommandType = System.Data.CommandType.Text;
+               //     cmd.CommandText = ("insert into website1 values('" + id + "','" + userName + "','" + lastName + "','" + email + "','" + city + "','" + password 
+               //         + "','" + repeatpassword + "','" + status + "');");
+                //    cmd.Connection = myConnection;
+                //    myConnection.Open();
+                //    cmd.ExecuteNonQuery();
+                //    myConnection.Close();
+                    /////////////////// Store procedure  /////////////////////////
+                    SqlCommand cmd = new SqlCommand("insertintoDatabase", myConnection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@PersonId", SqlDbType.VarChar).Value = id;
+                    cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = userName;
+                    cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = lastName;
+                    cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar).Value = email;
+                    cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = city;
+                    cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = password;
+                    cmd.Parameters.Add("@RepeatPassword", SqlDbType.VarChar).Value = repeatpassword;
+                    cmd.Parameters.Add("@status", SqlDbType.VarChar).Value = status;
                     myConnection.Open();
                     cmd.ExecuteNonQuery();
-                    myConnection.Close();
+                    myConnection.Close(); 
+                    /////////////////// Store procedure  /////////////////////////
+
+                    //////////////////// Sending Email ///////////////////////////
                     SendActivationEmail(1);
-                 //   confermation();
 
                 }
                 catch (SqlException ex)
                 {
                     Label1.ForeColor = System.Drawing.Color.Red;
-                    Label1.Text = "You failed! " + ex.Message;
+                   // Label1.Text = "You failed! " + ex.Message;
+                    Utilities.LogError(ex);
+                    throw;
                 }
                 if(lbemail.Text=="Wrong!! The specified string is not in the form required for an e-mail address."){
 
@@ -196,6 +201,7 @@ public partial class Registration : System.Web.UI.Page
                 else{
                     Label1.ForeColor = System.Drawing.Color.Green;////COLOUR
                     Label1.Text = "Records are Submitted Successfully!" + " \n  Confermation Email has been sended to you!";
+                   // Server.Transfer("Main Page.aspx", true);
                 }
             }
         }

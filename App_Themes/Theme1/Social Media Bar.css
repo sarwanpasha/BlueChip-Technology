@@ -1,0 +1,63 @@
+﻿        <style>
+nabo{ 
+    padding: 0px; 
+    margin: 0px; 
+    border: 0px; 
+    top:0px;
+
+}
+
+#id-nabo             
+{ width: 100%;
+ height: 40px;
+ background-color: white;
+ position: relative;
+  top: 0px;
+}
+
+uiil{ float: right;
+}
+
+ul lui{ list-style-type: none;
+}
+
+
+lui { display: block;    
+    position: relative;
+    float:right;
+    transition:width 2s;
+    -webkit-transition:width 2s; /* Safari */
+    height: 40px;
+    width: 40px;
+    background-color: white;
+}
+
+
+lui au { width: 0px;
+    background:red;
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border: 1px solid blue;
+    overflow: hidden;
+    height: 40px;
+    width: 90px;
+    color: blue;
+    z-index: 0;
+    margin-left: 40px;
+}
+
+lui:hover { width: 400px;
+}
+
+lui:hover img{ float:left}
+
+
+lui img { float: left;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+       
+    </style>

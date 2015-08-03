@@ -17,6 +17,8 @@ public partial class Signout : System.Web.UI.Page
        gettingemail= getemailID();
        loginstatusAsFalse();
        //lb1.Text = "Email ID = " + gettingemail;
+       getter_setter_for_variables.setLabel("");
+       getter_setter_for_variables.setunhide(false);
        Session.Abandon();
         Response.Redirect("Main Page.aspx");
     }

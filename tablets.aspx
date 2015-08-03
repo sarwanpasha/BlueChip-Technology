@@ -1,107 +1,18 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tablets.aspx.cs" Inherits="tablets" Theme="Theme1" StyleSheetTheme="Theme1" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="tablets.aspx.cs" Inherits="tablets" Theme="ThemeForTablet" StyleSheetTheme="ThemeForTablet" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-                    <link rel="SHORTCUT ICON" href="images/bull.png">
-        <title>Tablets</title>
-
-      <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-            <!----------  social media bar Starts    --------------->  
-        <style>
-nabo{ 
-    padding: 0px; 
-    margin: 0px; 
-    border: 0px; 
-    top:0px;
-
-}
-
-#id-nabo             
-{ width: 100%;
- height: 40px;
- background-color: white;
- position: relative;
-  top: 0px;
-}
-
-uiil{ float: right;
-}
-
-ul lui{ list-style-type: none;
-}
-
-
-lui { display: block;    
-    position: relative;
-    float:right;
-    transition:width 2s;
-    -webkit-transition:width 2s; /* Safari */
-    height: 40px;
-    width: 40px;
-    background-color: white;
-}
-
-
-lui au { width: 0px;
-    background:red;
-    display: block;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    border: 1px solid blue;
-    overflow: hidden;
-    height: 40px;
-    width: 90px;
-    color: blue;
-    z-index: 0;
-    margin-left: 40px;
-}
-
-lui:hover { width: 400px;
-}
-
-lui:hover img{ float:left}
-
-
-lui img { float: left;
-    position: relative;
-    z-index: 1;
-    background-color: white;
-}
-       
-    </style>
-            <!----------  social media bar ends    --------------->
-    
-                    <!----------  Footer bar starts    ---------------> 
-    <link href="//dmypbau5frl9g.cloudfront.net/assets/market/core/index-733c840037287d8983784a1909b6d1be.css" media="all" rel="stylesheet" type="text/css" /> 
-            <!----------  Footer bar ends    --------------->   
-
-                <!----------  Slideshow bar Starts    ---------------> 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+                <title>Tablet News</title>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+                    <!----------  Slideshow bar Starts    ---------------> 
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <meta name="description" content="PgwSlider is a responsive, lightweight and easy-to-use slider plugin for jQuery and Zepto">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="x-dns-prefetch-control" content="on">
-<style type="text/css">
-.pgwMenu{background:#333;height:40px;position:relative;list-style:none}.pgwMenu.light{background:#ddd}.pgwMenu ul{list-style:none;white-space:nowrap;margin:0;padding:0}.pgwMenu .pm-links.mobile,.pgwMenu .pm-viewMore>ul{background:#333;box-shadow:2px 2px 4px #777;position:absolute;left:0;top:100%;z-index:1000}.pgwMenu.light .pm-links.mobile{background:#ddd}.pgwMenu .pm-links.mobile li,.pgwMenu .pm-viewMore>ul>li{display:block;clear:both;width:175px}.pgwMenu li{float:left;font-size:.9rem}.pgwMenu a{display:block;color:#fff;line-height:40px;padding:0 12px;text-decoration:none}.pgwMenu.light a{color:#000}.pgwMenu a.selected{background:#777}.pgwMenu.light a.selected{background:#c5c5c5}.pgwMenu li a:hover{background:#666;text-decoration:none}.pgwMenu.light li a:hover{background:#d0d0d0}.pgwMenu .pm-dropDown,.pgwMenu .pm-viewMore,.pgwMenu .pm-viewMore>ul{display:none}.pgwMenu .pm-dropDown a{display:inline-block;background:#777}.pgwMenu .pm-dropDown a.active,.pgwMenu .pm-viewMore a.active{background:#666}.pgwMenu.light .pm-dropDown a{background:#c5c5c5}.pgwMenu.light .pm-dropDown a.active{background:#bbb}.pgwMenu .pm-dropDown span.icon,.pgwMenu .pm-dropDown span.white{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABZ0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMDvo9WkAAABKSURBVEhL7ZOxDQAwCMN6O4/T0tmjsxHJDB4yROJ0dz3s1BRHEi2OTREBpQFKA5QGKA3m7IP8RKeIgNIApQFKA5QGc/ZBfkJTdF0oUafLBAFNbAAAAABJRU5ErkJggg==) no-repeat;display:block;height:22px;width:22px;margin:9px 5px}.pgwMenu.light .pm-dropDown span.icon,.pgwMenu .pm-dropDown span.black{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABZ0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMDvo9WkAAABpSURBVEhL7ZPLCcAwDEM9jefI/ks1Hyj2QbiGSLcKHggl8sEktjTc/WGyZxo6YKAbrFzFoav3/hdhmsrlijBN5XJFmKZyuSJMU7lcsfV/kIN0FRJgyACGDGDIAIYMpK8CHt6iG6xZhY0JIJ+6AHGbUFsAAAAASUVORK5CYII=) no-repeat;display:block;height:22px;width:22px;margin:9px 5px}.pgwMenu .pm-viewMore{display:none;position:relative}.pgwMenu .pm-viewMore>a{display:inline-block}.pgwMenu .pm-viewMore>ul{left:auto;right:0}.pgwMenu .pm-viewMore li{float:none}.pgwMenu .pm-viewMore span.icon,.pgwMenu .pm-viewMore span.white{border-color:#fff transparent;border-style:solid;border-width:8px 6px 0;margin-left:3px;display:inline-block}.pgwMenu.light .pm-viewMore span.icon,.pgwMenu .pm-viewMore span.black{border-color:#000 transparent;border-style:solid;border-width:8px 6px 0;margin-left:3px;display:inline-block}
-@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans'),local('OpenSans'),url(".SETTING_STATIC."/fonts/opensans.woff) format('woff')}body{background:#fff;color:#333;font-family:Open Sans,arial,sans-serif;font-size:12px;font-size:.9rem;line-height:1.5;margin:0;min-width:320px;padding:0}h1,h2,h3,h4{margin:0}input,textarea{border:1px solid #ccc;font:.9rem Open Sans,arial,sans-serif;padding:3px}a{text-decoration:none;color:#333}a:hover{text-decoration:underline}ul{list-style:disc inside;padding:0;margin:0}img{border:0}div,textarea,table,td,th,code,pre{word-wrap:break-word}pre{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.cntr{margin:0 auto}.cntr:before,.cntr:after{content:' ';display:table}.cntr:after{clear:both}.cntr{max-width:1000px}.clr{clear:both}.flf{float:left}.fri{float:right}.bdr{border:1px solid #ddd}.bld{font-weight:bold}.itl{font-style:italic}.nbld{font-weight:normal}.prl{position:relative}.dbl{display:block}.dib{display:inline-block}.dta{display:table}.hide{display:none}.m5{margin:5px}.m10{margin:10px}.m15{margin:15px}.m20{margin:20px}.mt5{margin-top:5px}.mr5{margin-right:5px}.mb5{margin-bottom:5px}.ml5{margin-left:5px}.mt10{margin-top:10px}.mr10{margin-right:10px}.mb10{margin-bottom:10px}.ml10{margin-left:10px}.mt15{margin-top:15px}.mr15{margin-right:15px}.mb15{margin-bottom:15px}.ml15{margin-left:15px}.mt20{margin-top:20px}.mr20{margin-right:20px}.mb20{margin-bottom:20px}.ml20{margin-left:20px}.mb30{margin-bottom:30px}.tac{text-align:center}.tar{text-align:right}.fs08{font-size:.85rem}.fs09{font-size:.9rem}.fs1{font-size:1rem}.fs15{font-size:1.5rem}.fcc4{color:#c40000}.btg{border:solid 1px #ccc;border-radius:3px;line-height:24px;padding:0 7px;color:#555;background:#eaeaea;background:-moz-linear-gradient(top,#fff 0,#eaeaea 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(100%,#eee));background:-webkit-linear-gradient(top,#fff 0,#eee 100%);background:-o-linear-gradient(top,#fff 0,#eee 100%);background:-ms-linear-gradient(top,#fff 0,#eee 100%);background:linear-gradient(to bottom,#fff 0,#e8e8e8 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#eeeeee',GradientType=0)}.btg:hover{color:#333;box-shadow:0 1px 2px #ccc;background:#ddd;background:-moz-linear-gradient(top,#fff 0,#ddd 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#fff),color-stop(100%,#ddd));background:-webkit-linear-gradient(top,#fff 0,#ddd 100%);background:-o-linear-gradient(top,#fff 0,#ddd 100%);background:-ms-linear-gradient(top,#fff 0,#ddd 100%);background:linear-gradient(to bottom,#fff 0,#ddd 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0)}.btr{border:solid 1px #c40022;border-radius:3px;line-height:24px;padding:0 7px;color:#fff;background:#ddd;background:-moz-linear-gradient(top,#f40022 0,#c40022 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#f40022),color-stop(100%,#c40022));background:-webkit-linear-gradient(top,#f40022 0,#c40022 100%);background:-o-linear-gradient(top,#f40022 0,#c40022 100%);background:-ms-linear-gradient(top,#f40022 0,#c40022 100%);background:linear-gradient(to bottom,#f40022 0,#c40022 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#40022',endColorstr='#c40022',GradientType=0)}a.btg,a.btr{display:inline-block;padding:0 8px 1px;text-decoration:none}header{background:#f5f5f5}nav{background:#333;border-bottom:5px solid #c40000}nav a{text-decoration:none !important}nav .pgwMenu a.selected,nav .pgwMenu .pm-dropDown a{background:#c40000}footer div{padding:10px 0 20px;margin:20px 10px 0;border-top:1px solid #ddd;color:#888}.top{border-bottom:1px solid #e5e5e5;background:#f7f7f7}#mbmn a{color:#fff;display:block;line-height:40px;padding:0 10px;text-decoration:none}#mbmn a.act{background:#222}.hmbk{width:50%;float:left;border-top:1px solid #ddd}.hmdc{padding:20px 10px 10px}@media(max-width:480px){#mnct{display:none}.fs15{font-size:1.3rem}.hmbk{width:100%}}.mob ul{background:#222;position:absolute;top:40px;left:10px;box-shadow:0 4px 6px #777;z-index:1000}.mob li{float:none;width:150px;margin-right:0}.hmim{width:150px;height:100px}.hmli{min-width:200px}.hmpg{border-top:1px solid #ddd;padding-top:20px}.pglk{border-bottom:1px solid #d5d5d5;padding-bottom:10px}code{background:#f5f5f5;border:1px solid #ddd;display:block;padding:6px 10px}.adtp{border-bottom:1px solid #ddd;padding-bottom:10px;margin-bottom:20px}.admd{border:1px solid #ddd;border-left:0;border-right:0;padding:10px 0;margin-top:30px}.adbt{border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:10px 0}.bdtp{border-top:1px solid #ddd;padding-top:15px}#dlbl .lf{width:75%}#dlbl .rg{width:25%}table{display:block;border-spacing:3px;width:100%;overflow:hidden;margin-left:-3px}table thead{font-weight:bold;font-style:italic}table thead th{background:#c40000;padding:3px 5px;color:#fff}table tbody td{background:#f5f5f5;padding:5px}@media(max-width:480px){table{font-size:.7rem}}select{padding:3px}@media(max-width:767px){#dlbl .lf,#dlbl .rg{float:none;width:100%}#dlbl .rg img{display:inline-block;float:none}}
-pre .comment{color:#998}pre .support{color:#0086b3}pre .tag,pre .tag-name{color:navy}pre .keyword,pre .css-property,pre .vendor-prefix,pre .sass,pre .class,pre .id,pre .css-value,pre .entity.function,pre .storage.function{font-weight:bold}pre .css-property,pre .css-value,pre .vendor-prefix,pre .support.namespace{color:#333}pre .constant.numeric,pre .keyword.unit,pre .hex-color{font-weight:normal;color:#099}pre .entity.class{color:#458}pre .entity.id,pre .entity.function{color:#900}pre .attribute,pre .variable{color:teal}pre .string,pre .support.value{font-weight:normal;color:#d14}pre .regexp{color:#009926}
-.pgwSlider{width:100%;color:#fff}.pgwSlider a{display:block;text-decoration:none;color:#fff}.pgwSlider .ps-current{float:left;width:74%;overflow:hidden;height:inherit;position:relative;font-size:1rem}.pgwSlider.listOnTheLeft .ps-current{float:right}.pgwSlider .ps-current ul{width:100%}.pgwSlider .ps-current li{width:100%;z-index:1;opacity:0;display:none}.pgwSlider .ps-current img{max-width:100%;min-width:100%;height:auto;display:block;transition:margin-top 250ms linear}.pgwSlider .ps-caption{position:absolute;width:100%;padding:12px;background:rgba(0,0,0,0.7);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);left:0;bottom:0;display:none;z-index:3}ul.pgwSlider,.pgwSlider ul{float:right;width:25%;padding:0;list-style:none;margin:0}ul.pgwSlider.listOnTheLeft,.pgwSlider.listOnTheLeft>ul{float:left}ul.pgwSlider>li,.pgwSlider>.ps-list>li{height:50px;margin-bottom:6px;overflow:hidden;position:relative;opacity:.6;filter:alpha(opacity=60);font-size:.8rem;transition:opacity 200ms linear}ul.pgwSlider>li:last-child,.pgwSlider>ul>li:last-child{margin-bottom:0}ul.pgwSlider>li span,.pgwSlider>.ps-list>li span{display:block;width:100%;position:absolute;bottom:0;padding:5px;background:rgba(0,0,0,0.7);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}ul.pgwSlider>li:hover,.pgwSlider>ul>li:hover{opacity:1 !important}ul.pgwSlider>li img,.pgwSlider>ul>li img{width:100%;min-height:100%;display:block;transition:margin-top 250ms linear}.pgwSlider .ps-prevIcon{border-color:transparent #fff transparent;border-style:solid;border-width:10px 10px 10px 0;display:block}.pgwSlider .ps-nextIcon{border-color:transparent #fff transparent;border-style:solid;border-width:10px 0 10px 10px;display:block}.pgwSlider .ps-current .ps-prev{background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000',endColorstr='#99000000');-ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";border:1px solid #777;border-left:0;border-radius:0 4px 4px 0;position:absolute;padding:20px 20px 20px 17px;left:0;top:45%;cursor:pointer}.pgwSlider .ps-current .ps-next{background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000',endColorstr='#99000000');-ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";border:1px solid #777;border-right:0;border-radius:4px 0 0 4px;position:absolute;padding:20px 17px 20px 20px;right:0;top:45%;cursor:pointer}ul.pgwSlider.wide>li,.pgwSlider.wide>ul>li{width:100% !important}.pgwSlider.narrow .ps-current{margin-bottom:6px;font-size:.8rem}.pgwSlider.narrow .ps-current img{width:100%;min-height:inherit}.pgwSlider.narrow .ps-current,ul.pgwSlider.narrow,.pgwSlider.narrow>ul{width:100%}ul.pgwSlider.narrow>li,.pgwSlider.narrow>.ps-list>li{float:left;min-height:50px;max-height:70px;min-width:15%;font-size:.7rem;margin-bottom:0}ul.pgwSlider.narrow.listOnTheLeft>li,.pgwSlider.narrow.listOnTheLeft>ul>li{float:right}.pgwSlider.narrow .ps-caption{padding:8px}.pgwSlider.narrow .ps-current .ps-prev{padding:15px 15px 15px 12px;top:40%}.pgwSlider.narrow .ps-current .ps-next{padding:15px 12px 15px 15px;top:40%}
-</style>
-                <!----------  Slideshow bar ends    --------------->     
 
-
-</head>
-<body>
-    <form id="form1" runat="server">
-                        <br /><br /><br />
+                <!----------  Slideshow bar ends    ---------------> 
+                          <br /><br /><br />
                         <!----------  Slideshow bar Starts    ---------------> 
          <section class="cntr">
 
@@ -274,43 +185,7 @@ pre .comment{color:#998}pre .support{color:#0086b3}pre .tag,pre .tag-name{color:
 </div>
                                         <!------------- Section6 Ends     --------->
 
-                                              <!------------- Moving social media starts     --------->
-                            <div>
-            <div id="id-nabo">
 
-        <nabo>
-        <uil>
-                                    <lui>
-                <img src="images/yahoo-logo.png" width="40">
-            </lui>
-                                    <lui>
-                <img src="images/Whatsapp-Logo.png" width="40">
-            </lui>
-                                    <lui>
-                <img src="images/Youtube-logo.png" width="40">
-            </lui>
-                                    <lui>
-                <img src="images/Skype.png" width="40">
-            </lui>
-                                    <lui>
-                <img src="images/linkedin_logo.png" width="40">
-            </lui>                        
-            <lui>
-                <img src="images/google.png" width="40">
-            </lui>
-                        <lui>
-                <img src="images/tw.png" width="40">
-            </lui>
-            <lui>
-                <img src="images/fb.png" width="40">
-            </lui>
-
-        </uil>
-        </nabo>
-
-</div>
-</div>
-            <!------------- Moving social media ends     --------->
                 </div>
 
 			</div>
@@ -336,95 +211,6 @@ pre .comment{color:#998}pre .support{color:#0086b3}pre .tag,pre .tag-name{color:
         <link rel="stylesheet" type="text/css" href="https://assets.entrepreneur.com/css/global.2.0.34.css" />
 
     <!----------  Section Code ends    --------------->  
+</asp:Content>
 
-            
 
-    <!----------  Navigation Bar Starts    --------------->           
-<div class="nav">
- <nav class="navbar navbar-inverse" >
-  <div class="container-fluid">
-
-    <div>
-      <ul class="nav navbar-nav">
-          <li> <a><font size="5" color="white">BlueChip- Technology</font></a></li>
-        <li ><a href="Main Page.aspx" style="color:white">Home</a></li>
-        <li><a href="Lattest.aspx" style="color:white">Lattest</a></li>
-        <li><a href="Video.aspx" style="color:white">Videos</a></li>
- <li><a href="hacknews.aspx" style="color:white">Hack News  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	</a></li>
-        
-        <li><a runat="server" href="" style="color:white"> Search</a></li>			
-                <li><a runat="server" href="Registration.aspx" style="color:white">Register</a></li>
-		        <li ><a id="logIn" runat="server" href="login.aspx" style="color:white">Log in</a></li>        
-				 
-      </ul>
-    </div>
-  </div>
-</nav>
- 
-				
- </div>
-
-<div class="content">
-  
-  <div class="jquery-script-ads"><script type="text/javascript"><!--
-    google_ad_client = "ca-pub-2783044520727903";
-    /* jQuery_demo */
-    google_ad_slot = "2780937993";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
-  </div>
- </div>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script>
-    $(function () {
-        var prevScroll = 0,
-            curDir = 'down',
-            prevDir = 'up';
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() >= prevScroll) {
-                curDir = 'down';
-                if (curDir != prevDir) {
-                    $('.nav').stop();
-                    $('.nav').animate({ top: '-100px' }, 300);
-                    prevDir = curDir;
-                }
-            } else {
-                curDir = 'up';
-                if (curDir != prevDir) {
-                    $('.nav').stop();
-                    $('.nav').animate({ top: '0px' }, 300);
-                    prevDir = curDir;
-                }
-            }
-            prevScroll = $(this).scrollTop();
-        });
-    })
-</script>
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36251023-1']);
-    _gaq.push(['_setDomainName', 'jqueryscript.net']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
-    </form>
-</body>
-</html>
