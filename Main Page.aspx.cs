@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -16,14 +17,34 @@ public partial class Main_Page : System.Web.UI.Page
     string login;
     string requiredEmailID="";
     String toAddress, fromAddress, subject, body, fromPassword, comments;
-//    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
-    
+    string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
+    public static string OrganizationName, OrganizationHeading, OrganizationDescription, AuthoreName, AuthoreImage, MainImage, TimeDate,link,Catagory;
+    public static string[] lattestOrganizationName = new string[8];        //done
+    public static string[] lattestOrganizationHeading = new string[8];   //done
+    public static string[] lattestOrganizationDescription = new string[8]; //done
+    public static string[] lattestAuthoreName = new string[8];             //done
+    public static string[] lattestAuthoreImage = new string[8];
+    public static string[] lattestMainImage = new string[8];                //done
+    public static string[] lattestlink = new string[8];                      //done
+    public static string[] lattesttimedate = new string[8];                  //done
+
     String textField = "";
     #region page_load
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
+            getLattestOrganizationName();
+            getLattestOrganizationHeading();
+            getLattestOrganizationDescription();
+            getLattestAuthoreName();
+            getLattestAuthoreImage();
+            getLattestMainImage();
+            getLattestlink();
+            getLattestTimeDate();
+            initializingLinks();
+
+            getLattestNewsDataFromDatabase();
             initializepics();
             initializingBlogger();       // Initialize Text of Blogger Section
             initializeslideshow();       // Initialize Text of Slideshow Heading textSection
@@ -135,45 +156,87 @@ public partial class Main_Page : System.Web.UI.Page
         string slideimage8 = "images/" + slide8;
         Imag3.ImageUrl = "~/" + slideimage8;
 
+        ////////////  Lattest Main Image  //////////////////
         // section 1.1 image
-        string section1 = "7.jpg";
-        string imgsection1 = "images/" + section1;
+        string section1 = lattestMainImage[7] ;
+        string imgsection1 = section1;
         Image121.ImageUrl = "~/" + imgsection1;
 
         // section 1.2 image
-        string section2 = "8.jpg";
-        string imgsection2 = "images/" + section2;
+        string section2 = lattestMainImage[6];
+        string imgsection2 = section2;
         Image122.ImageUrl = "~/" + imgsection2;
 
         // section 1.3 image
-        string section3 = "9.jpg";
-        string imgsection3 = "images/" + section3;
+        string section3 = lattestMainImage[5];
+        string imgsection3 = section3;
         Image123.ImageUrl = "~/" + imgsection3;
 
         // section 1.4 image
-        string section4 = "10.jpg";
-        string imgsection4 = "images/" + section4;
+        string section4 = lattestMainImage[4];
+        string imgsection4 = section4;
         Image124.ImageUrl = "~/" + imgsection4;
 
         // section 1.5 image
-        string section55 = "7.jpg";
-        string imgsection55 = "images/" + section55;
+        string section55 = lattestMainImage[3];
+        string imgsection55 = section55;
         Image125.ImageUrl = "~/" + imgsection55;
 
         // section 1.6 image
-        string section66 = "8.jpg";
-        string imgsection66 = "images/" + section66;
+        string section66 = lattestMainImage[2];
+        string imgsection66 = section66;
         Image126.ImageUrl = "~/" + imgsection66;
 
         // section 1.7 image
-        string section77 = "9.jpg";
-        string imgsection77 = "images/" + section77;
+        string section77 = lattestMainImage[1];
+        string imgsection77 = section77;
         Image127.ImageUrl = "~/" + imgsection77;
 
         // section 1.8 image
-        string section88 = "10.jpg";
-        string imgsection88 = "images/" + section88;
+        string section88 = lattestMainImage[0];
+        string imgsection88 = section88;
         Image128.ImageUrl = "~/" + imgsection88;
+
+        // section 1.1.1 image
+        string authore1 = lattestAuthoreImage[7];
+        string authorpicc1 = authore1;
+        authorpic1.ImageUrl = "~/" + authorpicc1; 
+        // section 1.1.2 image
+        string authore2 = lattestAuthoreImage[6];
+        string authorpicc2 = authore2;
+        authorpic2.ImageUrl = "~/" + authorpicc2;
+
+        // section 1.1.3 image
+        string authore3 = lattestAuthoreImage[5];
+        string authorpicc3 = authore3;
+        authorpic3.ImageUrl = "~/" + authorpicc3;
+
+        // section 1.1.4 image
+        string authore4 = lattestAuthoreImage[4];
+        string authorpicc4 = authore4;
+        authorpic4.ImageUrl = "~/" + authorpicc4;
+
+        // section 1.1.5 image
+        string authore5 = lattestAuthoreImage[3];
+        string authorpicc5 = authore5;
+        authorpic5.ImageUrl = "~/" + authorpicc5;
+
+        // section 1.1.6 image
+        string authore6 = lattestAuthoreImage[2];
+        string authorpicc6 = authore6;
+        authorpic6.ImageUrl = "~/" + authorpicc6;
+
+        // section 1.1.7 image
+        string authore7 = lattestAuthoreImage[1];
+        string authorpicc7 = authore7;
+        authorpic7.ImageUrl = "~/" + authorpicc7;
+
+        // section 1.1.8 image
+        string authore8 = lattestAuthoreImage[0];
+        string authorpicc8 = authore8;
+        authorpic8.ImageUrl = "~/" + authorpicc8;
+
+        ////////////  Lattest Main Image  //////////////////
 
         // section 2.1 image
         string section5 = "7.jpg";
@@ -468,8 +531,9 @@ public partial class Main_Page : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            l1.Text = ex.Message;
-
+         //   l1.Text = ex.Message;
+            Utilities.LogError(ex);
+            throw;
         }
 
     }
@@ -1194,28 +1258,40 @@ public partial class Main_Page : System.Web.UI.Page
     #region initializingLattest
     private void initializingLattest()
     {
-        /////////////////   small Text  ///////////////////////
-        small1.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A3.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A6.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A9.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A12.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A15.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A18.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        A21.InnerHtml = "The menswear brand Public Rec was launched by a sweatpants aficionado on a mission to make loungewear look less like PJs.";
-        /////////////////   small Text  ///////////////////////
+        /////////////////   small Text Lattest ///////////////////////
+        small1.InnerHtml = lattestOrganizationDescription[7];
+        A3.InnerHtml = lattestOrganizationDescription[6];
+        A6.InnerHtml = lattestOrganizationDescription[5];
+        A9.InnerHtml = lattestOrganizationDescription[4];
+        A12.InnerHtml = lattestOrganizationDescription[3];
+        A15.InnerHtml = lattestOrganizationDescription[2];
+        A18.InnerHtml = lattestOrganizationDescription[1];
+        A21.InnerHtml = lattestOrganizationDescription[0];
+        /////////////////   small Text Lattest  ///////////////////////
 
-        /////////////////   Heading Text  ///////////////////////
-        heading1.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A2.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A5.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A8.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A11.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A14.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A17.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
-        A20.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
+        /////////////////   Heading Text Lattest  ///////////////////////
+        heading1.InnerHtml = lattestOrganizationHeading[7];
+        A2.InnerHtml = lattestOrganizationHeading[6];
+        A5.InnerHtml = lattestOrganizationHeading[5];
+        A8.InnerHtml = lattestOrganizationHeading[4];
+        A11.InnerHtml = lattestOrganizationHeading[3];
+        A14.InnerHtml = lattestOrganizationHeading[2];
+        A17.InnerHtml = lattestOrganizationHeading[1];
+        A20.InnerHtml = lattestOrganizationHeading[0];
 
-        /////////////////   Heading Text  ///////////////////////
+        /////////////////   Heading Text Lattest ///////////////////////
+
+        /////////////////   Organization Name Text Lattest  ///////////////////////
+        orgName1.InnerHtml = lattestOrganizationName[7];
+        orgName2.InnerHtml = lattestOrganizationName[6];
+        orgName3.InnerHtml = lattestOrganizationName[5];
+        orgName4.InnerHtml = lattestOrganizationName[4];
+        orgName5.InnerHtml = lattestOrganizationName[3];
+        orgName6.InnerHtml = lattestOrganizationName[2];
+        orgName7.InnerHtml = lattestOrganizationName[1];
+        orgName8.InnerHtml = lattestOrganizationName[0];
+
+        /////////////////   Organization Name Text Lattest ///////////////////////
 
         /////////////////   Heading Text Tablet tag   ///////////////////////
         A23.InnerHtml = "These 'Dressy' Sweatpants Are Killing It on Kickstarter";
@@ -1788,6 +1864,17 @@ public partial class Main_Page : System.Web.UI.Page
         author7.InnerHtml = "Catherine Clifford";
         author8.InnerHtml = "Catherine Clifford";
 
+        ///////////////// Lattest Author Name //////////////////////
+        authorr1.InnerHtml = lattestAuthoreName[7];
+        a4.InnerHtml = lattestAuthoreName[6];
+        a7.InnerHtml = lattestAuthoreName[5];
+        a10.InnerHtml = lattestAuthoreName[4];
+        a13.InnerHtml = lattestAuthoreName[3];
+        a16.InnerHtml = lattestAuthoreName[2];
+        a19.InnerHtml = lattestAuthoreName[1];
+        a22.InnerHtml = lattestAuthoreName[0];
+
+        ///////////////// Lattest Author Name //////////////////////
 
     }
     #endregion
@@ -2004,14 +2091,14 @@ public partial class Main_Page : System.Web.UI.Page
         /////////////// Slideshow tag time //////////////////////
 
         /////////////// lattest tag time //////////////////////
-        time1.InnerHtml = System.DateTime.Now.ToString();
-        time2.InnerHtml = System.DateTime.Now.ToString();
-        time3.InnerHtml = System.DateTime.Now.ToString();
-        time4.InnerHtml = System.DateTime.Now.ToString();
-        time5.InnerHtml = System.DateTime.Now.ToString();
-        time6.InnerHtml = System.DateTime.Now.ToString();
-        time7.InnerHtml = System.DateTime.Now.ToString();
-        time8.InnerHtml = System.DateTime.Now.ToString();
+        time1.InnerHtml = lattesttimedate[7];
+        time2.InnerHtml = lattesttimedate[6];
+        time3.InnerHtml = lattesttimedate[5];
+        time4.InnerHtml = lattesttimedate[4];
+        time5.InnerHtml = lattesttimedate[3];
+        time6.InnerHtml = lattesttimedate[2];
+        time7.InnerHtml = lattesttimedate[1];
+        time8.InnerHtml = lattesttimedate[0];
         /////////////// lattest tag time //////////////////////
 
         /////////////// tablet tag time //////////////////////
@@ -2130,4 +2217,411 @@ public partial class Main_Page : System.Web.UI.Page
 
     }
     #endregion
-}
+    #region getLattestNewsDataFromDatabase()
+    public void getLattestNewsDataFromDatabase()
+    {
+        try {  
+        SqlConnection myConnection = new SqlConnection(source);
+        SqlCommand cmd = new SqlCommand("GetLattestNewsData", myConnection);
+        cmd.CommandType = CommandType.StoredProcedure;
+        myConnection.Open();
+        cmd.Parameters.Add(new SqlParameter("@OrganizationName", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "OrganizationName", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@OrganizationHeading", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "OrganizationHeading", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@OrganizationDescription", SqlDbType.VarChar, 200, ParameterDirection.Output, false, 0, 200,
+            "OrganizationDescription", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@AuthoreName", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "AuthoreName", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@AuthoreImage", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "AuthoreImage", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@MainImage", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "MainImage", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@TimeDate", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "TimeDate", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@link", SqlDbType.VarChar, 100, ParameterDirection.Output, false, 0, 100,
+            "link", DataRowVersion.Default, null));
+        cmd.Parameters.Add(new SqlParameter("@Catagory", SqlDbType.VarChar, 20, ParameterDirection.Output, false, 0, 20,
+            "Catagory", DataRowVersion.Default, null));
+
+        cmd.ExecuteNonQuery();
+          OrganizationName = (string)cmd.Parameters["@OrganizationName"].Value;
+          OrganizationHeading = (string)cmd.Parameters["@OrganizationHeading"].Value;
+          OrganizationDescription = (string)cmd.Parameters["@OrganizationDescription"].Value;
+          AuthoreName = (string)cmd.Parameters["@AuthoreName"].Value;
+          AuthoreImage = (string)cmd.Parameters["@AuthoreImage"].Value;
+          MainImage = (string)cmd.Parameters["@MainImage"].Value;
+          TimeDate = (string)cmd.Parameters["@TimeDate"].Value;
+          link = (string)cmd.Parameters["@link"].Value;
+          Catagory = (string)cmd.Parameters["@Catagory"].Value;
+        myConnection.Close();
+        commentdisplay.ForeColor = System.Drawing.Color.White;
+   //     commentdisplay.Text = OrganizationName + OrganizationHeading + OrganizationDescription + AuthoreName + AuthoreImage + MainImage + TimeDate + link;
+            }
+        catch(Exception ex){
+          //  commentdisplay.ForeColor = System.Drawing.Color.White;
+           // commentdisplay.Text = ex.Message;
+            Utilities.LogError(ex);
+            throw;
+        }
+    }
+    #endregion
+    #region Get Lattest top 8
+    #region getLattestOrganizationName()
+    public void getLattestOrganizationName()
+    {
+        int i = 0;
+
+        try
+        { 
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestOrganizationName", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+              //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+              //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestOrganizationName[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+           //     commentdisplay.Text = lattestOrganizationName[0] + lattestOrganizationName[1] + lattestOrganizationName[2] + lattestOrganizationName[3] +
+              //      lattestOrganizationName[4] + lattestOrganizationName[5] + lattestOrganizationName[6] + lattestOrganizationName[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+    #endregion
+    #region getLattestOrganizationHeading()
+    public void getLattestOrganizationHeading() 
+    {
+        int i = 0;
+        try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestOrganizationHeading", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestOrganizationHeading[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+           //     commentdisplay.Text = lattestOrganizationHeading[0] + lattestOrganizationHeading[1] + lattestOrganizationHeading[2] + lattestOrganizationHeading[3] +
+             //       lattestOrganizationHeading[4] + lattestOrganizationHeading[5] + lattestOrganizationHeading[6] + lattestOrganizationHeading[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+    #endregion
+    #region getLattestOrganizationDescription()
+    public void getLattestOrganizationDescription()
+    {
+        int i = 0;
+        try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestOrganizationDescription", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestOrganizationDescription[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+             //   commentdisplay.Text = lattestOrganizationDescription[0] + lattestOrganizationDescription[1] + lattestOrganizationDescription[2] +
+               //     lattestOrganizationDescription[3] + lattestOrganizationDescription[4] + lattestOrganizationDescription[5] + lattestOrganizationDescription[6] +
+                //    lattestOrganizationDescription[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+    #endregion
+    #region getLattestAuthoreName()
+    public void getLattestAuthoreName()
+    {
+        int i = 0;
+        try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestAuthoreName", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestAuthoreName[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+            //    commentdisplay.Text = lattestAuthoreName[0] + lattestAuthoreName[1] + lattestAuthoreName[2] + lattestAuthoreName[3] + lattestAuthoreName[4] +
+             //       lattestAuthoreName[5] + lattestAuthoreName[6] + lattestAuthoreName[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+#endregion
+    #region getLattestAuthoreImage()
+    public void getLattestAuthoreImage()
+    {
+        int i = 0;
+        try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestAuthoreImage", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestAuthoreImage[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+              //  commentdisplay.Text = lattestAuthoreImage[0] + lattestAuthoreImage[1] + lattestAuthoreImage[2] + lattestAuthoreImage[3] + lattestAuthoreImage[4] +
+              //     lattestAuthoreImage[5] + lattestAuthoreImage[6] + lattestAuthoreImage[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+#endregion
+    #region getLattestMainImage()
+    public void getLattestMainImage()
+    {
+        int i = 0;
+         try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestMainImage", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestMainImage[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+           //     commentdisplay.Text = lattestMainImage[0] + lattestMainImage[1] + lattestMainImage[2] + lattestMainImage[3] + lattestMainImage[4] +
+             //       lattestMainImage[5] + lattestMainImage[6] + lattestMainImage[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+#endregion
+    #region getLattestlink()
+    public void getLattestlink()
+    {
+        int i = 0;
+         try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("getLattestlink", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattestlink[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+              //  commentdisplay.Text = lattestlink[0] + lattestlink[1] + lattestlink[2] + lattestlink[3] + lattestlink[4] + lattestlink[5] + lattestlink[6] + lattestlink[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+#endregion
+    #region getLattestTimeDate()
+    public void getLattestTimeDate() 
+    {
+        int i = 0;
+        try
+        {
+            SqlConnection connection = new SqlConnection(source);
+
+            SqlCommand cmd = new SqlCommand("LattestTimeDate", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (connection)
+            {
+                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
+                //      , connection);
+                connection.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lattesttimedate[i] = (String.Format("{0}", reader[0]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+                //  commentdisplay.Text = lattestlink[0] + lattestlink[1] + lattestlink[2] + lattestlink[3] + lattestlink[4] + lattestlink[5] + lattestlink[6] + lattestlink[7];
+            }
+        }
+        catch (Exception ex)
+        {
+            commentdisplay.Text = ex.Message;
+        }
+    }
+    #endregion
+    #endregion
+    #region initializingLinks()
+    public void initializingLinks()
+    {
+        ////////////Heading Lattest link  /////////////////
+        heading1.HRef = lattestlink[7];
+        A2.HRef =       lattestlink[6];
+        A5.HRef =       lattestlink[5];
+        A8.HRef =       lattestlink[4];
+        A11.HRef =      lattestlink[3];
+        A14.HRef =      lattestlink[2];
+        A17.HRef =      lattestlink[1];
+        A20.HRef =      lattestlink[0];
+        ////////////Heading Lattest link  /////////////////
+
+
+        ////////////Author pic link  /////////////////
+        authorPiclink1.HRef = lattestlink[7];
+        authorPiclink2.HRef = lattestlink[6];
+        authorPiclink3.HRef = lattestlink[5];
+        authorPiclink4.HRef = lattestlink[4];
+        authorPiclink5.HRef = lattestlink[3];
+        authorPiclink6.HRef = lattestlink[2];
+        authorPiclink7.HRef = lattestlink[1];
+        authorPiclink8.HRef = lattestlink[0];
+        ////////////Author pic link  /////////////////
+
+    }
+    #endregion
+} 

@@ -186,13 +186,13 @@
 	</div>
  		
  <br /><br /><br /><br />
-	<script src="https://assets.entrepreneur.com/js/lib.min-9cf5e331.js.gz"></script>   <!-- For pics-->
-	<script src="https://assets.entrepreneur.com/js/ent.min-47d119a7.js.gz"></script>   <!-- For pics-->
+<script src="Javascript/entrepreneour1.js"></script>   <!-- For pics-->
+<script src="Javascript/entrepreneour2.js"></script>   <!-- For pics-->
                      		<script>
                      		    var edition = "us";
                      		    var dataLayer = [{ 'edition': edition }];
 	</script>
-        <link rel="stylesheet" type="text/css" href="https://assets.entrepreneur.com/css/global.2.0.34.css" />
+        <link rel="stylesheet" type="text/css" href="themes/article1.css" />
 
     <!----------  Section Code ends    --------------->  
 

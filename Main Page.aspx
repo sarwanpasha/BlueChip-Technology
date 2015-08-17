@@ -4,20 +4,15 @@
         <title>Main Page</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-          <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link href="style3.css" rel="stylesheet"/>
   <script src="Javascript/jquery1.js"></script>
   <script src="Javascript/jquery2.js"></script>
-    <!--------- Back to top start   -------------->
-    <script src="Javascript/Back to top2.js" type="text/javascript"></script>
-        <script src="Javascript/Back to top.js" type="text/javascript"></script>
-     <!--------- Back to top Ends  ----------------->
     <body>
      <form id="form1" runat="server">
-           <div id="backtotop">Scroll to Top</div>
+         <br /><br /><br />
      <div style="height: 300px">
-                  <!--------------Blogger ends   ------------->
+                  <!--------------Blogger Starts   ------------->
          
          <div class="css-slideshow" style="background-color:grey; top: -57px; left: 681px; width: 553px;">
            <Center>
@@ -240,7 +235,7 @@
                                                         
                          							<div  >
                                 <h3>
-                                    <a href="/article/248140" id="tb0a0" runat="server"></a>
+                                    <a href="articles/article9.aspx" id="tb0a0" runat="server"></a>
 
                                 </h3>											
 						</div>   
@@ -256,7 +251,7 @@
                                              
                          							<div  >
                                 <h3>
-                                    <a href="/article/248140" id="tb2a2" runat="server"></a>
+                                    <a href="articles/article9.aspx" id="tb2a2" runat="server"></a>
 
                                 </h3>											
 						</div>   
@@ -273,7 +268,7 @@
                          
                          							<div  >
                                 <h3>
-                                    <a href="/article/248140" id="tb3a3" runat="server"></a>
+                                    <a href="articles/article9.aspx" id="tb3a3" runat="server"></a>
 
                                 </h3>											
 						</div>   
@@ -544,25 +539,25 @@ div#two {
 					<div class="vc_carousel-slideline-inner">
 						<div class="vc_item">
 						   <div class="vc_inner">
-                 <asp:Image  ID="Image121" runat="server" alt="mini web banner for tour - osaka-2" width="300" height="300"  class="attachment-full" />														
+                 <asp:Image  ID="Image121" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />														
                                 </div>
 
                                                                               <!-------- Text bar1 starts  ---->
                          							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a  class="kicker" id="orgName1" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="heading1" runat="server"></a>
+                                    <a id="heading1" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
    <a id="small1" runat="server"> 
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
+					       <a class="authorhero" id="authorPiclink1" runat="server">
+                      <asp:Image  ID="authorpic1" runat="server" alt="Bluechip-Technology" width="25" height="25" class="lazy" />																												
 					</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="authorr1" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a  id="authorr1" runat="server"></a></div>
 							   <a id="time1" runat="server"> </a>
 									<!----<time datetime="2015-07-07 17:47:00">2015-07-07 17:47:00</time>  ------->
 						</div>   
@@ -570,25 +565,25 @@ div#two {
 						</div>
 						 <div class="vc_item">
 							<div class="vc_inner">
-     <asp:Image  ID="Image122" runat="server" alt="mini web banner for tour - jakarta-2" width="300" height="300"  class="attachment-full" />																												
+     <asp:Image  ID="Image122" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
                                  </div>
 
                                                                                <!-------- Text bar2 starts  ---->
                         							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a   class="kicker" id="orgName2" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A2" runat="server"></a>
+                                    <a  id="A2" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
     <a id="A3" runat="server">  
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
+					       <a class="authorhero" id="authorPiclink2" runat="server">
+                      <asp:Image  ID="authorpic2" runat="server" alt="Bluechip-Technology" width="25" height="25"  class="lazy" />																												
 					</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a4" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a id="a4" runat="server"></a></div>
 							
 							   <a id="time2" runat="server"> </a>
 						</div> 
@@ -596,26 +591,27 @@ div#two {
 						</div>
 						 <div class="vc_item">
 							<div class="vc_inner">
-               <asp:Image  ID="Image123" runat="server" alt="mini web banner for tour - hong kong-2" width="300" height="300"  class="attachment-full" />																												
+               <asp:Image  ID="Image123" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
 															
                                  </div>
 
                                                                                <!-------- Text bar3 starts  ---->
                         							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a  class="kicker" id="orgName3" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A5" runat="server"></a>
+                                    <a  id="A5" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
      <a id="A6" runat="server">  
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
-					</a>
+					       <a class="authorhero" id="authorPiclink3" runat="server">
+				                      <asp:Image  ID="authorpic3" runat="server" alt="Bluechip-Technology" width="25" height="25"  class="lazy" />																												
+
+                               	</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a7" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a  id="a7" runat="server"></a></div>
 							
 							   <a id="time3" runat="server"> </a>
 						</div> 
@@ -623,26 +619,27 @@ div#two {
 						</div>
 						 <div class="vc_item">
 							<div class="vc_inner">
-         <asp:Image  ID="Image124" runat="server" alt="mini web banner for tour - bangkok" width="300" height="300"  class="attachment-full" />																												
+         <asp:Image  ID="Image124" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
 												
                                  </div>
 
                                                                                <!-------- Text bar4 starts  ---->
                         							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a  class="kicker" id="orgName4" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A8" runat="server"></a>
+                                    <a id="A8" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
     <a id="A9" runat="server">  
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
-					</a>
+					       <a class="authorhero" id="authorPiclink4" runat="server">
+				    <asp:Image  ID="authorpic4" runat="server" alt="Bluechip-Technology" width="25" height="25"  class="lazy" />																												
+
+                               	</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a10" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a id="a10" runat="server"></a></div>
 							
 							   <a id="time4" runat="server"> </a>
 						</div> 
@@ -650,26 +647,27 @@ div#two {
 						</div>
 						 <div class="vc_item">
 							<div class="vc_inner">
-         <asp:Image  ID="Image125" runat="server" alt="mini web banner for tour - fukuoka" width="300" height="300"  class="attachment-full" />																												
+         <asp:Image  ID="Image125" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
 															
                                  </div>
 
                                                                                <!-------- Text bar5 starts  ---->
                         							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a   class="kicker" id="orgName5" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A11" runat="server"></a>
+                                    <a id="A11" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
      <a id="A12" runat="server"> 
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
-					</a>
+					       <a class="authorhero" id="authorPiclink5" runat="server">
+				       <asp:Image  ID="authorpic5" runat="server" alt="Bluechip-Technology" width="25" height="25"  class="lazy" />																												
+
+                               	</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a13" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a id="a13" runat="server"></a></div>
 							
 							   <a id="time5" runat="server"> </a>
 						</div> 
@@ -677,26 +675,26 @@ div#two {
 						</div>
 					 <div class="vc_item">
 							<div class="vc_inner">
-        <asp:Image  ID="Image126" runat="server" alt="mini web banner for tour - singapore" width="300" height="300"  class="attachment-full" />																												
+        <asp:Image  ID="Image126" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
 														
                                  </div>
  
                                                                            <!-------- Text bar6 starts  ---->
                          							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a   class="kicker" id="orgName6" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A14" runat="server"></a>
+                                    <a id="A14" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
        <a id="A15" runat="server">
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
-					</a>
+					       <a class="authorhero" id="authorPiclink6" runat="server">
+				         <asp:Image  ID="authorpic6" runat="server" alt="Bluechip-Technology" width="25" height="25"  class="lazy" />																													
+                           </a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a16" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a  id="a16" runat="server"></a></div>
 							
 							   <a id="time6" runat="server"> </a>
 						</div> 
@@ -704,27 +702,27 @@ div#two {
 						</div>
 					 <div class="vc_item">
 							<div class="vc_inner">
-        <asp:Image  ID="Image127" runat="server" alt="mini web banner for tour - taipei" width="300" height="300"  class="attachment-full" />																												
+        <asp:Image  ID="Image127" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
 															
 
 							</div>
 
                                                                            <!-------- Text bar7 starts  ---->
-                        							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+                        							<div >
+		<a  class="kicker" id="orgName7" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A17" runat="server"></a>
+                                    <a id="A17" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
              <a id="A18" runat="server"> 
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
+					       <a class="authorhero" id="authorPiclink7" runat="server">
+                      <asp:Image  ID="authorpic7" runat="server" alt="Bluechip-Technology" width="25" height="25"  class="lazy" />																												
 					</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a19" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a id="a19" runat="server"></a></div>
 							
 							   <a id="time7" runat="server"> </a>
 						</div> 
@@ -732,27 +730,27 @@ div#two {
 						</div>
 					 <div class="vc_item">
 							<div class="vc_inner">
-           <asp:Image  ID="Image128" runat="server" alt="mini web banner for tour - tokyo" width="300" height="300"  class="attachment-full" />																												
+           <asp:Image  ID="Image128" runat="server" alt="Bluechip-Technology" width="300" height="300"  class="attachment-full" />																												
          														
 
 							</div>
 
                                                                            <!-------- Text bar8 starts  ---->
                         							<div  >
-		<a href="/topic/kickstarter" class="kicker">Kickstarter</a>		
+		<a  class="kicker" id="orgName8" runat="server"></a>		
                                 <h3>
-                                    <a href="/article/248140" id="A20" runat="server"></a>
+                                    <a id="A20" runat="server"></a>
 
                                 </h3>
                                  <div class="deck">
      <a id="A21" runat="server"> 
                                        </a>
                                   </div>
-					       <a class="authorhero" href="/author/catherine-clifford">
-						<img alt="Catherine Clifford" class="lazy" data-original="https://assets.entrepreneur.com/content/1x1/30/20141210220039-catherine-clifford.jpeg" />
+					       <a class="authorhero" id="authorPiclink8" runat="server">
+                     <asp:Image  ID="authorpic8" runat="server" alt="Bluechip-Technology" width="25" height="25"   class="lazy" />																												
 					</a>
 				
-				<div class="byline"><a href="/author/catherine-clifford" id="a22" runat="server">Catherine Clifford</a></div>
+				<div class="byline"><a id="a22" runat="server"></a></div>
 							
 							   <a id="time8" runat="server"> </a>
 						</div> 

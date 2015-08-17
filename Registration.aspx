@@ -5,9 +5,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <form id="form1" runat="server" style=" height: 719px;background-image:url('images/27.jpg')">
-         <br /><br /><br />
-    <h1 style="color:brown;"">
-        &nbsp;</h1>
         <h1 style="color:#006666">
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         Create Registration

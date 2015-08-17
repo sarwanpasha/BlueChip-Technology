@@ -27,7 +27,7 @@ public partial class login : System.Web.UI.Page
     {
         Server.Transfer("Registration.aspx", true);
     }
-    public bool check()
+    public bool check() 
     {
         String wq = "true";
         SqlConnection myConnection = new SqlConnection(source);

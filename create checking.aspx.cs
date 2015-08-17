@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -12,35 +13,24 @@ using System.Web.UI.WebControls;
 public partial class create_checking : System.Web.UI.Page
 {
     string title, detail,name,organizationname,currentTime,myname;
+    public static String link;
    // string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
     string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
     string a;
     string requiredNumber = string.Empty;
     int defaultNumber;
+    public static String image,authorImage;
     protected void Page_Load(object sender, EventArgs e)
     {
         currentTime = System.DateTime.Now.ToString();
-    //   a=  gettingArticleNumber();
-    // lbch.Text = "The number is = " + a;
-      //  updateDatabase();
     }
+    #region Get Article Number from database
     public string gettingArticleNumber()
     {
         try
         {
             myname = "sarwan";
             SqlConnection myConnection = new SqlConnection(source);
-           // System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-          //  cmd.CommandType = System.Data.CommandType.Text;
-           // cmd.CommandText = ("select number from recordholder where name=('" + myname + "');");
-            //cmd.Connection = myConnection;
-         //   myConnection.Open();
-           // SqlDataReader reader = cmd.ExecuteReader();
-          //  while (reader.Read())
-           // {
-           //     requiredNumber = reader[0].ToString();
-           // }
-           // myConnection.Close();
             SqlCommand cmd = new SqlCommand("SelectingArticleNumber", myConnection);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
@@ -54,10 +44,14 @@ public partial class create_checking : System.Web.UI.Page
             return requiredNumber;
         }
         catch(Exception ex){
-            lbch.Text = ex.Message;
-            return "Wrong!!!!!!!!!!!";
+         //   lbch.Text = ex.Message;
+            Utilities.LogError(ex);
+            throw;
+         //   return "Wrong!!!!!!!!!!!";
         }
     }
+    #endregion
+    #region Get Form Name From database
     public void updateDatabase()
     {
        string all= gettingArticleNumber();
@@ -87,10 +81,13 @@ public partial class create_checking : System.Web.UI.Page
         }
         catch (SqlException ex)
         {
-            lbch.Text = ex.Message;
-           // return "Wrong!!!!!!!!!!!";
+         //   lbch.Text = ex.Message;
+            Utilities.LogError(ex);
+            throw;
         }
     }
+    #endregion
+    #region Create New Article
     protected void btncreatenewarticle_click(object sender, EventArgs e)
     {
         a = gettingArticleNumber();
@@ -99,6 +96,7 @@ public partial class create_checking : System.Web.UI.Page
         detail = detailText.InnerText;
         name = nameText.InnerText; 
         organizationname = organizationNameText.InnerText;
+        link = "http://localhost:2904/articles/" + filetemporaryname + ".aspx";
         try
         {
             string fielName = Server.MapPath("~/articles/" + filetemporaryname + ".aspx");
@@ -110,59 +108,11 @@ public partial class create_checking : System.Web.UI.Page
             TextWriter tw = new StreamWriter(fielName);
 
             // write a line of text to the file
-            tw.WriteLine(@"<%@ Page Language=""C#"" AutoEventWireup=""true"" CodeFile=""" + filetemporaryname + @".aspx.cs"" Inherits="""+filetemporaryname+@""" %>
-
-<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
-
-<html xmlns=""http://www.w3.org/1999/xhtml"">
-<head runat=""server"">
-    <title>" + filetemporaryname + @"</title>
-   <style>
-* {
- margin: 0px;
- padding: 0px;
- font-family: helvetica neue, helvetica, arial, sans-serif;
- font-weight: 200;
-}
-body 
-{ 
-    background-color:black
-
-}
-.nav {
-  position: fixed;
-  top: 0px;
-  height: 60px;
-  background: #006666;
-  left: -10px;
-  right: -50px;
-  text-align: center;
-  color: #fff;
-  line-height: 100px;
-  width: 2345px;
-    }
-
-.content {
-  height: 2px;
-  padding: 20px;
-  color:#fff;
-  width:728px;
-  margin:150px auto;
-}
-.content p {
-  margin: 20px 0;
-}
-</style>
-      <meta charset=""utf-8"">
-  <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
-  <link rel=""stylesheet"" href=""http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"">
-  <script src=""https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js""></script>
-  <script src=""http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js""></script>
-
-                <!----------  Footer bar starts    ---------------> 
-    <link href=""//dmypbau5frl9g.cloudfront.net/assets/market/core/index-733c840037287d8983784a1909b6d1be.css"" media=""all"" rel=""stylesheet"" type=""text/css"" /> 
-            <!----------  Footer bar ends    ---------------> 
-</head>
+            tw.WriteLine(@"<%@ Page Language=""C#"" MasterPageFile=""~/MasterPage.master"" AutoEventWireup=""true"" CodeFile=""" + filetemporaryname + @".aspx.cs"" Inherits="""+filetemporaryname+ @""" Theme=""LogTheme"" StyleSheetTheme=""LogTheme"" %>
+<asp:Content ID=""Content1"" ContentPlaceHolderID=""head"" Runat=""Server"">
+ <title>" + filetemporaryname + @"</title>
+</asp:Content>
+<asp:Content ID=""Content2"" ContentPlaceHolderID=""ContentPlaceHolder1"" Runat=""Server"">
 <body>
     <form id=""form1"" runat=""server"">
     <!----------  Section Code Starts    --------------->  
@@ -183,19 +133,18 @@ body
 				<div class=""list"">
                     <!------------- Section1 Starts     --------->
              <div class=""pl pl-floathero"">
- 					<img class=""lazy"" src=""images/8.jpg"" data-original="" alt="" />
+ 					<img class=""lazy"" src=""" + image + @""" data-original="" alt="" />
 				 
                  <br />
 							<div class=""block"">
-		<a href=""/topic/sleep"" class=""kicker"">" + organizationname+@"</a>		
+		<a href=""/topic/sleep"" class=""kicker"">" + organizationname+@"</a>	
+        <asp:Image id=""authorImage"" runat=""server"" src=""" + authorImage + @""" data-original="" alt="" style=""width: 47px; height: 27px"" />
+        <a href=""/topic/sleep"" class=""kicker"" style=""position: absolute; left: 5.4em; top: 31.4em; width: 9.8em; height: 1.8em;"">" +name+@"</a>	
                                 <h3><a href=""/article/247728"">"+title+@"</a></h3>
 
 									<div class=""deck"">"+detail+@"</div>
-					
-									
-				<div class=""byline""><a href=""/author/david-robson"">"+name+@"</a></div>
-							
-														<time class=""readtime""><i>" + currentTime + @"</i> </time>
+			<time class=""readtime"" style=""position: absolute; left: 39.6em; top: 28.4em; width: 12em; height: 1.8em;""><i>" + currentTime + @"</i> </time>
+
 										</div>
 </div>
                                         <!------------- Section1 Ends     --------->
@@ -210,260 +159,10 @@ body
 
     <!----------  Section Code ends    --------------->  
 
-                                <!---- Footer Section starts --------------->
-    <div class=""page"">
-        <div class=""page__canvas"">
-            <div class=""canvas"">
-                <div class=""canvas__header"">
-                    <footer class=""site-footer"">
-                        <div class=""site-footer__primary"">
-                            <div class=""footer-primary"">
-                                <div class=""grid-container"">
-                                    <div class=""footer-top"">
-                                        <div class=""footer-top__left"">
-                                            <a class=""footer-top__market-logo"" href=""https://market.envato.com"">Envato Market</a>
-                                        </div>
-                                        <div class=""footer-top__right is-hidden-tablet-and-below"">
-                                            <div class=""market-stats"">
-                                                <div class=""market-stats__stat"">
-                                                    <p class=""t-body -color-light h-remove-margin"">
-                                                        0
-        <span>community members</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=""footer-primary__columns"">
-                                        <div class=""footer-primary__group--first"">
-                                            <div class=""footer-box"">
-                                                <div class=""footer-box__header js-footer-expand-toggle"" data-target=""#footer-social"">
-                                                    <h4>Follow us</h4>
-                                                </div>
-                                                <div id=""footer-social"" class=""footer-box__content"">
-                                                    <ul class=""social-links"">
-                                                        <li><a><img src=""images/fb.png"" width=""40""></a></li>
-                                                        <li><a><img src=""images/tw.png"" width=""40""></a></li>
-                                                        <li><a><img src=""images/google.png"" width=""40""></a></li>
-                                                        <li><a><img src=""images/linkedin_logo.png"" width=""40""></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class=""footer-box"">
-                                                <div class=""footer-box__header js-footer-expand-toggle"" data-target=""#footer-meet"">
-                                                    <h4>Meet Us</h4>
-                                                </div>
-                                                <div id=""footer-meet"" class=""footer-box__content"">
-                                                    <div class=""footer-box__list"">
-                                                        <ul class=""t-list -style-none"">
-                                                            <li class=""t-body h-remove-margin""><a href=""http://envato.com"">About </a>Us</li>
-                                                            <li class=""t-body h-remove-margin""><a href=""http://www.envato.com/sites"">Explore our Ecosystem</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""http://envato.com/careers"">Careers</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=""footer-box"">
-                                                <div class=""footer-box__header js-footer-expand-toggle"" data-target=""#footer-help"">
-                                                    <h4>Need Help?</h4>
-                                                </div>
-                                                <div id=""footer-help"" class=""footer-box__content"">
-                                                    <div class=""footer-box__list"">
-                                                        <ul class=""t-list -style-none"">
-                                                            <li class=""t-body h-remove-margin""><a href=""https://help.market.envato.com"" class=""footer-box__link"">Help Center</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""/legal/market"" rel=""nofollow""> Our Market Terms</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""/legal/author"" rel=""nofollow"">Author Terms</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""/licenses"" rel=""nofollow"">Envato Market Licenses</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""http://www.envato.com/contact"" rel=""nofollow"">Contact </a>Us</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=""footer-primary__group--second"">
-                                            <div class=""footer-box"">
-                                                <div class=""footer-box__header js-footer-expand-toggle"" data-target=""#footer-community"">
-                                                    <h4><span class=""is-hidden-tablet-and-below"">Join our</span> Community
-            </h4>
-                                                </div>
-                                                <div id=""footer-community"" class=""footer-box__content"">
-                                                    <div class=""footer-box__list"">
-                                                        <ul class=""t-list -style-none"">
-                                                            <li class=""t-body h-remove-margin""><a href=""/forums"" rel=""nofollow"">Forums</a></li>
-                                                            <li class=""t-body h-remove-margin"">Our<a href=""http://marketblog.envato.com/""> Market Blog</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""http://envato.com/community/meetups"">Community Meetups</a></li>
-                                                            <li class=""t-body h-remove-margin""><a href=""/affiliate_program"" rel=""nofollow"">Become an Affiliate</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=""footer-box"">
-                                                <div class=""footer-box__header js-footer-expand-toggle"" data-target=""#footer-subscribe"">
-                                                    <h4><span class=""is-hidden-tablet-and-below"">Email</span> Newsletters
-            </h4>
-                                                </div>
-                                                <div id=""footer-subscribe"" class=""footer-box__content"">
-                                                    <p class=""t-body h-remove-margin is-hidden-desktop"">
-                                                        Subscribe to receive updates</p>
-                                                    <p class=""t-body is-hidden-tablet-and-below"">
-  Subscribe to receive inspiration, ideas, and news in your inbox.
-                                                    </p>
-                                                    </div>
-                                                <input type=""text"" placeholder=""Email Address"" name=""EMAIL"" class=""footer-subscribe__input"" id=""tbemailsubscribe"" />
-                                                <asp:Button ID=""btnsubscribe"" runat=""server"" Text=""Subscribe"" OnClick=""btnsubscribe_Click"" />
-     </form>
-                                                    <a href="" class=""footer-box__external-link is-hidden-tablet-and-below"">Privacy Policy</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=""footer-primary__group--third"">
-                                            <div class=""footer-box"">
-                                                <div class=""footer-box__content is-hidden-tablet-and-below"">
-                                                    <div class=""media h-spacing-below"">
-                                                        <div class=""media__item"">
-                                                            <a href=""http://localhost:2904/Lattest.aspx"" target=""_blank"">
-                                                            <img alt=""Open. New services!"" height=""112"" src=""images/7.jpg"" width=""140"" /> </a>
-                                                        </div>
-                                                        <div class=""media__body"">
-                                                            <p class=""t-body"">
-                                                                Checkout The lattest Technology News Here.</p>
-                                                            <p class=""t-body h-remove-margin"">
-                                                                <a href=""http://localhost:2904/Lattest.aspx"" class=""t-link -color-light"" target=""_blank"">Lattest Technology News</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=""footer-box__content is-hidden-tablet-and-below"">
-                                                    <div class=""media"">
-                                                        <div class=""media__item"">
-                                                            <a href=""http://localhost:2904/hacknews.aspx"" target=""_blank"">
-                                                            <img alt=""Tuts+"" height=""112"" src=""images/8.jpg"" width=""140"" /> </a>
-                                                        </div>
-                                                        <div class=""media__body"">
-                                                            <p class=""t-body"">
-                                                                Here You can check The lattest news About Hacking from All over the World.</p>
-                                                            <p class=""t-body h-remove-margin"">
-                                                                <a href=""http://localhost:2904/hacknews.aspx"" class=""t-link -color-light"" target=""_blank"">Lattest Hacking News</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=""footer-bottom"">
-                                        <center>
-                                        <p class=""t-body h-remove-margin"">
-                                            <small>&copy; 2015 BlueChip- Technology Ltd.</small></p>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-    <style>
-        footer{
-    height: 100px; 
-    width:100%;
-    position: absolute;
-    left: 0;
-    bottom: 0; 
-}
-    </style>
-          </div>
-
-        </div>
-      </div>
-    </div>
-                           <!---- Footer Section ends --------------->             
-
-    <!----------  Navigation Bar Starts    --------------->  
-    <div>
-<div class=""nav"">
- <nav class=""navbar navbar-inverse"" >
-  <div class=""container-fluid"">
-
-    <div>
-      <ul class=""nav navbar-nav"">
-          <li> <a><font size=""5"" color=""white"">BlueChip- Technology</font></a></li>
-        <li ><a href=""http://localhost:2904/Main Page.aspx"" style=""color:white"">Home</a></li>
-        <li><a href=""http://localhost:2904/Lattest.aspx"" style=""color:white"">Lattest</a></li>
-        <li><a href=""http://localhost:2904/Video.aspx"" style=""color:white"">Videos</a></li>
- <li><a href=""hacknews.aspx"" style=""color:white"">Hack News  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	</a></li>
-        
-        <li><a runat=""server""  style=""color:white""> Search</a></li>			
-                <li><a runat=""server"" href=""http://localhost:2904/Registration.aspx"" style=""color:white"">Register</a></li>
-		        <li ><a id=""logIn"" runat=""server"" href=""http://localhost:2904/login.aspx"" style=""color:white"">Log in</a></li>        
-				 
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
-<div class=""content"">
-  
-  <div class=""jquery-script-ads""><script type=""text/javascript""><!--
-    google_ad_client = ""ca-pub-2783044520727903"";
-    /* jQuery_demo */
-    google_ad_slot = ""2780937993"";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
-</script>
-<script type=""text/javascript""
-src=""http://pagead2.googlesyndication.com/pagead/show_ads.js"">
-</script>
-
-  </div>
- </div>
-<script src=""http://code.jquery.com/jquery-1.11.1.min.js""></script>
-<script>
-    $(function () {
-        var prevScroll = 0,
-            curDir = 'down',
-            prevDir = 'up';
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() >= prevScroll) {
-                curDir = 'down';
-                if (curDir != prevDir) {
-                    $('.nav').stop();
-                    $('.nav').animate({ top: '-100px' }, 300);
-                    prevDir = curDir;
-                }
-            } else {
-                curDir = 'up';
-                if (curDir != prevDir) {
-                    $('.nav').stop();
-                    $('.nav').animate({ top: '0px' }, 300);
-                    prevDir = curDir;
-                }
-            }
-            prevScroll = $(this).scrollTop();
-        });
-    })
-</script>
-<script type=""text/javascript"">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36251023-1']);
-    _gaq.push(['_setDomainName', 'jqueryscript.net']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
-    </div>
+ 
     </form>
 </body>
-</html>
+</asp:Content>
 ");
 
             // close the stream
@@ -499,13 +198,147 @@ public partial class" +" " + filetemporaryname +"" + @" : System.Web.UI.Page
             tw.Close();
          //   Response.Redirect("file.aspx");
             updateDatabase();
+            saveIntoDataBase(organizationNameText.InnerText, titleText.InnerText, shortDetailText.InnerText, nameText.InnerText, authorImage, image, currentTime,link);
             Server.Transfer("~/articles/"+filetemporaryname+".aspx", true);
            // lbch.Text = "~/articles/" + filetemporaryname + ".aspx";
 
         } 
-        catch(Exception abb){
-            lbch.Text = abb.Message;
+        catch(Exception ex){
+         //  lbch.Text = ex.Message;
+          Utilities.LogError(ex);
+          throw; 
         }
     }
-    
+    #endregion
+    #region imagesUpload
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        StartUpLoad();
+    }
+    private void StartUpLoad()
+    {
+        try
+        {
+
+            //get the file name of the posted image
+
+            string imgName = FileUpload1.FileName;
+
+            //sets the image path
+
+            string imgPath = "images/" + imgName;
+
+            //get the size in bytes that
+
+
+
+            int imgSize = FileUpload1.PostedFile.ContentLength;
+
+
+
+            //validates the posted file before saving
+
+            if (FileUpload1.PostedFile != null && FileUpload1.PostedFile.FileName != "")
+            {
+                if (slide1.Checked == true)
+                {
+                       // 10240 KB means 10MB, You can change the value based on your requirement
+                         FileUpload1.SaveAs(Server.MapPath(imgPath));
+                         image = imgPath;
+                         check1.ImageUrl = "~/" + imgPath;
+                         slide1.Checked = false;
+                }
+                else if (slide2.Checked == true)
+                    {
+                         FileUpload1.SaveAs(Server.MapPath(imgPath));
+                         authorImage = imgPath;
+                         check2.ImageUrl = "~/" + imgPath;
+                         slide2.Checked = false;
+                    }
+            }
+        }
+        catch (Exception ex)
+        {
+           // l1.Text = ex.Message;
+            Utilities.LogError(ex);
+            throw;
+        }
+
+    }
+    #endregion
+    #region Saving Form in Database
+    public void saveIntoDataBase(string OrganizationName,string OrganizationHeading,string OrganizationDescription,string AuthoreName,string AuthoreImage,
+        string MainImage,string TimeDate,string link1)
+    {
+        SqlConnection myConnection = new SqlConnection(source);
+        SqlCommand cmd = new SqlCommand("insertFormData", myConnection);
+        cmd.CommandType = CommandType.StoredProcedure;
+        myConnection.Open();
+        // create a new parameter
+        DbParameter param = cmd.CreateParameter();
+        param.ParameterName = "@OrganizationName";
+        param.Value = OrganizationName;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@OrganizationHeading";
+        param.Value = OrganizationHeading;
+        param.DbType = DbType.String;
+        param.Size = 50;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@OrganizationDescription";
+        param.Value = OrganizationDescription;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@AuthoreName";
+        param.Value = AuthoreName;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@AuthoreImage";
+        param.Value = AuthoreImage;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@MainImage";
+        param.Value = MainImage;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@TimeDate";
+        param.Value = TimeDate;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // create a new parameter
+        param = cmd.CreateParameter();
+        param.ParameterName = "@link";
+        param.Value = link1;
+        param.DbType = DbType.String;
+        cmd.Parameters.Add(param);
+        // result will represent the number of changed rows
+        try
+        {
+            // execute the stored procedure
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+              //   lbch.Text = ex.Message;
+            Utilities.LogError(ex);
+            throw;
+        }
+        finally
+        {
+            myConnection.Close();
+        }
+    }
+    #endregion
 }

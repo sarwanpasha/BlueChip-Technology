@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
         NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
         //display the physical address of the first nic in the array,
         //which should correspond to our mac address
-        lb1.Text = nics[0].GetPhysicalAddress().ToString();
+    //    lb1.Text = nics[0].GetPhysicalAddress().ToString();
     }
 
 }

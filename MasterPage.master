@@ -4,12 +4,17 @@
 
 <html xmlns="">
 <head runat="server">
-   
+   <link rel="SHORTCUT ICON" href="images/bull.png">
     <asp:ContentPlaceHolder id="head" runat="server">
          <title></title>
     </asp:ContentPlaceHolder>
 </head>
 <body>
+        <!--------- Back to top start   -------------->
+    <script src="Javascript/Back to top2.js" type="text/javascript"></script>
+        <script src="Javascript/Back to top.js" type="text/javascript"></script>
+     <!--------- Back to top Ends  ----------------->
+     <div id="backtotop">Scroll to Top</div>
                  <br />
                  <br />
                  <br />

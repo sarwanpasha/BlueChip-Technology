@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form runat="server" style="background-image:url(images/27.jpg)">
-        <br /><br /><br />
+     
      <h1 style="color:#006666">
         &nbsp;</h1>
         <h1 style="color:#006666">

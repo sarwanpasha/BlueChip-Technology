@@ -46,7 +46,7 @@ body
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
 
 </head>
 <body>
@@ -72,16 +72,48 @@ body
                     <!------------- Section1 Starts     --------->
              <div >
 							<div class="block">
-					<label>Title!!</label>
+					<label>Heading Text!!</label>
                           <textarea id="titleText" runat="server" style="width:1131px"></textarea>
                                 <br />
-                    <label>Name!!</label>
+                    <label>Author Name!!</label>
                        <textarea id="nameText" runat="server" style="width:1131px"></textarea>
                                                                 <br />
                     <label>Organization Name!!</label>
                        <textarea id="organizationNameText" runat="server" style="width:1131px"></textarea>
+                                   <br />
+                    <label>Short Detail!! </label> 
+                    <textarea id="shortDetailText" runat="server" style="width:1131px"></textarea>
+
                             </div>
 </div>
+                     <!------------- Upload starts     --------->
+                                 <div class="img" style="width: 229px">
+         <section>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <asp:FileUpload ID="FileUpload1" runat="server" />
+
+       &nbsp;&nbsp;&nbsp;
+
+       <asp:Button ID="Button1" runat="server" Text="Upload" onclick="Button1_Click"/>
+
+       <br />
+
+        <br />
+        <asp:Label ID="l1" runat="server" Text=""></asp:Label>
+   
+</section>
+
+                      </div>
+                      <div class="img" style="width: 167px">
+                      <asp:CheckBox ID="slide1" runat="server" style="width:20px"/>
+                      &nbsp;
+                      <asp:CheckBox ID="slide2" runat="server" Width="23px"/>
+                                                 <label>Images</label>
+                     </div>
+    <asp:Image  class="lazy" id="check1" runat="server" data-original=" alt="/> 
+    <asp:Image  class="lazy" id="check2" runat="server" data-original=" alt="/> 
+                                         <!------------- Upload Ends     --------->
+
                                         <!------------- Section1 Ends     --------->
                     <br /><br /><br /><br />
                                         <!------------- Section2 Starts     --------->
