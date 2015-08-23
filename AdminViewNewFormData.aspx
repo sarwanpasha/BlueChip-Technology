@@ -10,7 +10,7 @@
     <div>
         <asp:GridView ID="GridView1" runat="server" ShowHeaderWhenEmpty="True"
             AutoGenerateColumns="False" onrowdeleting="RowDeleting"
-            OnRowCancelingEdit="cancelRecord" OnRowEditing="editRecord"
+            OnRowCancelingEdit="cancelRecord" OnRowEditing="editRecord" 
             OnRowUpdating="updateRecord" CellPadding="4"
             EnableModelValidation="True" GridLines="None" Width="1297px"
             ForeColor="#333333" >
@@ -156,7 +156,7 @@
             <FooterTemplate>
             <asp:TextBox ID="newLink" runat="server" MaxLength="100"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvtxtNewLink" runat="server" Text="*" ToolTip="Enter Link" ControlToValidate="newLink"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="revtxtNewLink" runat="server" Text="*" ToolTip="Enter Footer alphabate " ControlToValidate="newLink" ValidationExpression="^[a-zA-Z'.\s]{1,100}$"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="revtxtNewLink" runat="server" Text="*" ToolTip="Enter Footer alphabate " ControlToValidate="newLink" ValidationExpression="^[a-zA-Z0-9':./\s]{1,100}$"></asp:RegularExpressionValidator>
           
             </FooterTemplate>
             </asp:TemplateField>

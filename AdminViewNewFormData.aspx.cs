@@ -15,7 +15,7 @@ public partial class AdminViewNewFormData : System.Web.UI.Page
             currentTime = System.DateTime.Now.ToString();
             FillGridView();
         }
-    }
+    } 
     public void FillGridView()
     {
         try
@@ -132,7 +132,7 @@ public partial class AdminViewNewFormData : System.Web.UI.Page
             dr["AuthoreImage"] = "images/" + FileName + ".jpg";
             dr["MainImage"] = "images/" + FileNamee + ".jpg";
             dr["TimeDate"] = currentTime;
-            dr["lblLink"] = txtlink.Text.Trim();
+            dr["link"] = txtlink.Text.Trim();
             dr["Catagory"] = txtCatagory.Text.Trim();
             GlobalClass.dt.Rows.Add(dr);
             GlobalClass.adap.Update(GlobalClass.dt);
@@ -186,7 +186,7 @@ public partial class AdminViewNewFormData : System.Web.UI.Page
         catch (Exception ex)
         {
             Response.Write("<script> alert('Record updation fail...') </script>");
-         
+            Utilities.LogError(ex);
         }
     }
     protected void RowDeleting(object sender, GridViewDeleteEventArgs e)
