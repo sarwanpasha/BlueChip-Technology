@@ -14,7 +14,6 @@ public partial class create_checking : System.Web.UI.Page
 {
     string title, detail,name,organizationname,currentTime,myname;
     public static String link;
-   // string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
     string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
     string a;
     string requiredNumber = string.Empty;
@@ -204,9 +203,7 @@ public partial class" +" " + filetemporaryname +"" + @" : System.Web.UI.Page
 
         } 
         catch(Exception ex){
-         //  lbch.Text = ex.Message;
           Utilities.LogError(ex);
-          throw; 
         }
     }
     #endregion

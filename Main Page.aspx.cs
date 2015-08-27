@@ -22,7 +22,7 @@ public partial class Main_Page : System.Web.UI.Page
     public static string[] lattestOrganizationName = new string[6];         
     public static string[] lattestOrganizationHeading = new string[6];    
     public static string[] lattestOrganizationDescription = new string[6];  
-    public static string[] lattestAuthoreName = new string[6];              
+    public static string[] lattestAuthoreName = new string[6];               
     public static string[] lattestAuthoreImage = new string[6];             
     public static string[] lattestMainImage = new string[6];                 
     public static string[] lattestlink = new string[6];                       
@@ -1053,10 +1053,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestOrganizationName", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-              //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-              //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1094,10 +1093,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestOrganizationHeading", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-                //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1133,10 +1131,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestOrganizationDescription", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-                //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1172,10 +1169,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestAuthoreName", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-                //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1211,10 +1207,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestAuthoreImage", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-                //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1250,10 +1245,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestMainImage", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-                //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1289,6 +1283,7 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("getLattestlink", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
                 connection.Open();
@@ -1326,10 +1321,9 @@ public partial class Main_Page : System.Web.UI.Page
 
             SqlCommand cmd = new SqlCommand("LattestTimeDate", connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@count", SqlDbType.VarChar).Value = 6;
             using (connection)
             {
-                //  SqlCommand command = new SqlCommand("select TimeDate from LattestNewsData where TimeDate in ( SELECT  TOP 8(TimeDate) from LattestNewsData ORDER BY TimeDate DESC);"
-                //      , connection);
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();

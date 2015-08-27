@@ -9,3 +9,6 @@ protected void Page_Load(object sender, EventArgs e)
 Response.Status = "500 Internal Server Error";
 }
 </script>
+<p>
+    Sorry<br />
+    Page is not Found</p>

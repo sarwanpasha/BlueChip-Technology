@@ -13,7 +13,6 @@ public partial class login : System.Web.UI.Page
 
     String username, password,firstname;
     String NAME;
-  //  string source = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\USERS\PASHA\DOCUMENTS\WEBSITE.MDF;Integrated Security=True";
     string source = ConfigurationManager.ConnectionStrings["BlueChipConnectionString"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -31,11 +30,6 @@ public partial class login : System.Web.UI.Page
     {
         String wq = "true";
         SqlConnection myConnection = new SqlConnection(source);
-      //  myConnection.Open();
-       // SqlCommand st = new SqlCommand("select EmailAdress,Password from website1 where EmailAdress='" + tbusername.Text + "'and status='" + wq + "'", myConnection);
-       // SqlDataAdapter aad = new SqlDataAdapter(st);
-       // DataTable td = new DataTable();
-      //  aad.Fill(td);
         SqlCommand cmd = new SqlCommand("CheckEmailActivation", myConnection);
         cmd.CommandType = CommandType.StoredProcedure;
         SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);

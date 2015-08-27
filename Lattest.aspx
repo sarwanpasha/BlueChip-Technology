@@ -13,29 +13,35 @@
          imageSlider.thumbnailPreview(function (thumbIndex) { return "<img src='images/thumb" + (thumbIndex + 1) + ".jpg' style='width:100px;height:60px;' />"; });
     </script>
         <!----------  Slideshow Code Ends    --------------->  
-     <br /><br /><br /><br /><br /><br /><br />
+     <br /> 
         <!----------  Slideshow Code Starts    ---------------> 
-     <div id="sliderFrame">
+     <div id="sliderFrame"> 
         <div id="slider">
-            <a href="http://www.menucool.com/javascript-image-slider" target="_blank">
-                <img src="images/image-slider-1.jpg" alt="#cap1" />
-            </a>
-            <img src="images/image-slider-2.jpg" alt="Lorem ipsum dolor sit amet" />
-            <img src="images/image-slider-3.jpg" alt="Pure Javascript. No jQuery. No flash." />
-            <img src="images/image-slider-4.jpg" alt="#cap2" />
-            <img src="images/image-slider-5.jpg" alt="Excepteur sint occaecat cupidatat" />
+            <asp:Image  id="image1" runat="server" alt="#cap1" /> 
+            <asp:Image  id="image2" runat="server" alt="#cap2" /> 
+            <asp:Image  id="image3" runat="server" alt="#cap3" /> 
+            <asp:Image  id="image4" runat="server" alt="#cap4" /> 
+            <asp:Image  id="image5" runat="server" alt="#cap5" /> 
         </div>
         <div style="display: none;">
             <div id="cap1">
-                Welcome to <a href="http://www.menucool.com/">Menucool.com</a>.
+               <a id="alt1" runat="server"></a>.
             </div>
             <div id="cap2">
-                <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
+               <a id="alt2" runat="server"></a>.
+            </div>
+                        <div id="cap3">
+               <a id="alt3" runat="server"></a>.
+            </div>
+            <div id="cap4">
+              <a id="alt4" runat="server"></a>.
+            </div>
+                        <div id="cap5">
+              <a id="alt5" runat="server"></a>.
             </div>
         </div>
     </div>
         <!----------  Slideshow Code Ends    --------------->   
-    <br /><br />
     <!----------  Section Code Starts    --------------->  
         
         	<div id="page-scroller">
@@ -160,6 +166,44 @@
 										</div>
 </div>
                                         <!------------- Section6 Ends     --------->
+                                                            <!------------- Section7 Starts     --------->
+             <div class="pl pl-floathero">
+										<a href="/article/247728" class="hero">
+					<img class="lazy" src="images/7.jpg" data-original="https://assets.entrepreneur.com/content/3x2/274/20150625150229-learn-sleep-woman-grass-book.jpeg" alt="Can You Learn in Your Sleep?" />
+				</a>
+							<div class="block">
+		<a href="/topic/sleep" class="kicker">Sleep</a>		
+                                <h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
+
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory 
+                                        with your eyes closed.</div>
+					
+									
+				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
+							
+														<time class="readtime"><i class="fa fa-clock-o"></i> 11 min read</time>
+										</div>
+</div>
+                                        <!------------- Section7 Ends     --------->
+                                                            <!------------- Section8 Starts     --------->
+             <div class="pl pl-floathero">
+										<a href="/article/247728" class="hero">
+					<img class="lazy" src="images/7.jpg"  alt="Can You Learn in Your Sleep?" />
+				</a>
+							<div class="block">
+		<a href="/topic/sleep" class="kicker">Sleep</a>		
+                                <h3><a href="/article/247728">Can You Learn in Your Sleep?</a></h3>
+
+									<div class="deck">Sleep learning used to be a pipe dream. Now neuroscientists say they have found ways to enhance your memory 
+                                        with your eyes closed.</div>
+					
+									
+				<div class="byline"><a href="/author/david-robson">David Robson</a></div>
+							
+														<time class="readtime"><i class="fa fa-clock-o"></i> 11 min read</time>
+										</div>
+</div>
+                                        <!------------- Section8 Ends     --------->
 
                 </div>
 
